@@ -1,0 +1,12 @@
+[debug] > Exec(run -m 1 3 3, None, None)
+[debug] Evaluating tasks: Compile / run
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] compiling 2 Scala sources to C:\Users\Pablo\Desktop\ScalaCandyCrush\target\scala-2.13\classes ...
+[error] C:\Users\Pablo\Desktop\ScalaCandyCrush\src\main\scala\Main.scala:46:9: i is already defined as value i
+[error]     val i: Int = 2
+[error]         ^
+[error] one error found
+[debug] Forcing garbage collection...
+[error] (Compile / compileIncremental) Compilation failed
+[error] Total time: 0 s, completed 5 abr. 2023 21:20:03
+[debug] > Exec(idea-shell, None, None)
