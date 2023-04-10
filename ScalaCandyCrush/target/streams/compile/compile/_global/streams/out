@@ -1,6 +1,0 @@
-[debug] Acquiring lock on file C:\Users\Pablo\Desktop\ScalaCandyCrush\project\target\.sbt-compilation-infos\root-compile\.sbt-idea-lock ...
-[error] C:\Users\Pablo\Desktop\ScalaCandyCrush\src\main\scala\Main.scala:46:9: i is already defined as value i
-[error]     val i: Int = 2
-[error]         ^
-[error] one error found
-[debug] Releasing lock on file C:\Users\Pablo\Desktop\ScalaCandyCrush\project\target\.sbt-compilation-infos\root-compile\.sbt-idea-lock.

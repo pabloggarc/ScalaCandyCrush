@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ScalaCandyCrush.iml" filepath="$PROJECT_DIR$/.idea/modules/ScalaCandyCrush.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ScalaCandyCrush-build.iml" filepath="$PROJECT_DIR$/.idea/modules/ScalaCandyCrush-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ScalaCandyCrush.iml" filepath="$PROJECT_DIR$/ScalaCandyCrush.iml" />
     </modules>
   </component>
 </project>
