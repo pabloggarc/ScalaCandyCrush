@@ -14,6 +14,7 @@ class Miclase (args: Array[String]){
   }
 
   private def buclePrincipal(tablero: List[Char], vidasJuego: Int): Unit = {
+
     println(operaciones.mostrarTablero(tablero, vidasJuego, numColsTab))
 
     vidasJuego match {
@@ -26,17 +27,15 @@ class Miclase (args: Array[String]){
         println(caramelo_seleccionado," VALOR este es el caramelo q he seleccionado")
 
         if (caramelo_seleccionado.isDigit && caramelo_seleccionado.asDigit >= 1 & caramelo_seleccionado.asDigit <= 6) {
-          //TODO: si es caramelo_seleccionado normal, llamar a funcion de backtracking, luego marcar X, borrar y caer (actualizar vidas)
           val caminoEncontrado = operaciones.buscarCamino(tablero, filaUsuario*numColsTab+colUsuario, numFilasTab, numColsTab)
           println(caminoEncontrado, "camino ENCONTRADO en MAIN")
-          //val conteo = //funcion contar caramelos eliminados con la lista de buscar Camino es contar elementos de la lista CAMINO ENCONTRADO
           val tableroConX = operaciones.marcar(tablero, caminoEncontrado,0)
-          println("Tablero con X:")
+          val borrados: Int = operaciones.contarX(tableroConX)
+          println("Se han borrado " + borrados + " caramelos")
           println(operaciones.mostrarTablero(tableroConX, vidasJuego, numColsTab))
-          println(operaciones.cambiosTablero(tableroConX))
-          println("Prueba Tablero cambiado: ")
-          println(operaciones.mostrarTablero(operaciones.actualizarTablero(tableroConX, operaciones.cambiosTablero(tableroConX)), vidasJuego, numColsTab))
-          println("Fin tablero")
+          val cambios: List[List[Int]] = operaciones.cambiosTablero(tableroConX)
+          val nuevoTablero: List[Char] = operaciones.actualizarTablero(tableroConX, operaciones.cambiosTablero(tableroConX))
+          buclePrincipal(nuevoTablero, vidasJuego)
         }
         else if(caramelo_seleccionado == 'B' || caramelo_seleccionado == 'T' || caramelo_seleccionado == 'R'){ //estamos ante un caramelo_seleccionado NO ESPECIAL
           caramelo_seleccionado match {
@@ -44,8 +43,8 @@ class Miclase (args: Array[String]){
             case 'T' => //TODO: funcion de TNT
             case 'R' => //TODO: funcion de rompecabezas
           }
+          buclePrincipal(tablero, vidasJuego)
         }
-        buclePrincipal(tablero, vidasJuego)
     }
   }
 

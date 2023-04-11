@@ -190,9 +190,20 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         contarNoXencimaAux(tablero, elem % numCol, elem)
     }
 
+    private def perteneceSublista(lista: List[List[Int]], elem: Int): Boolean = {
+        lista match {
+            case Nil => false
+            case _ => {
+                lista.head match {
+                    case x if x.head == elem => true
+                    case _ => perteneceSublista(lista.tail, elem)
+                }
+            }
+        }
+    }
+
     private def recolocarTableroAuxAux(tablero: List[Char], elem: Int, XDebajo: Int, valorAnterior: Char): List[Int] = {
         if (elem + numCol * XDebajo < numFila * numCol && XDebajo > 0 && valorAnterior != 'X') {
-            //println("El valor de la casilla " + elem + " se tiene que desplazar a " + (elem + numCol * XDebajo))
             List(elem + numCol * XDebajo, valorAnterior.toInt - '0'.toInt)
         }
         else{
@@ -208,9 +219,6 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
             val noXEncima: Int = contarNoXencima(tablero, elem)
             val XDebajo: Int = contarXdebajo(tablero, elem)
             val valorAnterior: Char = tablero(elem)
-
-            //println("noXEncima: " + noXEncima + ", XDebajo: " + XDebajo + ", valorAnterior: " + valorAnterior)
-
             val listaAux = recolocarTableroAuxAux(tablero, elem, XDebajo, valorAnterior)
 
             if (XDebajo + boolToInt(valorAnterior == 'X') - noXEncima > 0) {
@@ -232,43 +240,44 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         }
     }
 
-     def cambiosTablero(tablero: List[Char]): List[List[Int]] = {
-         recolocarTableroAux(tablero, 0)
-     }
-
-     /*private def actualizarElementoTablero(tablero: List[Char], actualizacion: List[Int]): List[Char] = {
-        tablero match {
-            case Nil => Nil
-            case x :: y =>
-                if (actualizacion(0) == 0) actualizacion(1).toString.charAt(0) :: y
-                else x :: actualizarElementoTablero(y, List(actualizacion(0) - 1, actualizacion(1)))
+    private def dejarDefinitivos(actualizaciones: List[List[Int]], actualizacionesDefinitivas: List[List[Int]]): List[List[Int]] = {
+        actualizaciones match {
+            case Nil => actualizacionesDefinitivas
+            case head :: tail => {
+                if(perteneceSublista(actualizacionesDefinitivas, head.head)){
+                    dejarDefinitivos(tail, actualizacionesDefinitivas)
+                }
+                else{
+                    dejarDefinitivos(tail, actualizacionesDefinitivas :+ head)
+                }
+            }
         }
     }
 
-    private def actualizarTableroAux(tablero: List[Char], actualizaciones: List[List[Int]], i: Int): List[Char] = {
-        if (i < longitud(actualizaciones)){
-            val tableroActualizado: List[Char] = actualizarElementoTablero(tablero, actualizaciones(i))
-            println("Actualizando: " + actualizaciones(i))
-            actualizarTableroAux(tableroActualizado, actualizaciones, i + 1)
-        }
-        else {
-            tablero
-        }
-    }*/
+     def cambiosTablero(tablero: List[Char]): List[List[Int]] = {
+         dejarDefinitivos(recolocarTableroAux(tablero, 0), List())
+     }
 
     private def nuevoTablero(nTablero: Array[Char], actualizaciones: List[List[Int]]): List[Char] = {
         actualizaciones match {
             case Nil => nTablero.toList
             case _ => {
-                val tActualizado: Array[Char] = nTablero
-                tActualizado(actualizaciones.head(0)) = actualizaciones.head(1).toString.charAt(0)
-                nuevoTablero(tActualizado, actualizaciones.tail)
+                nTablero(actualizaciones.head(0)) = actualizaciones.head(1).toString.charAt(0)
+                nuevoTablero(nTablero, actualizaciones.tail)
             }
         }
     }
 
     def actualizarTablero(tablero: List[Char], actualizaciones: List[List[Int]]): List[Char] = {
         nuevoTablero(Array.ofDim[Char](longitud(tablero)), actualizaciones)
+    }
+
+    def contarX(tablero: List[Char]): Int = {
+        tablero match {
+            case Nil => 0
+            case n if n.head == 'X' => 1 + contarX(tablero.tail)
+            case _ => contarX(tablero.tail)
+        }
     }
 
 }
