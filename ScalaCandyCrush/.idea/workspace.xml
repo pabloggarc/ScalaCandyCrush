@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f2331880-12fa-4634-b25a-50fbf34872f6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScalaCandyCrush.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ScalaCandyCrush.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ScalaCandyCrush/Miclase.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ScalaCandyCrush/Miclase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ScalaCandyCrush/Operaciones.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ScalaCandyCrush/Operaciones.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Miclase.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Miclase.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Operaciones.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Operaciones.scala" afterDir="false" />
     </list>
@@ -30,15 +31,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Pablo/Desktop/ScalaCandyCrush",
-    "settings.editor.selected.configurable": "proofread"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pablo/Desktop/ScalaCandyCrush&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;proofread&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="candy" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -58,6 +59,8 @@
       <option name="presentableId" value="Default" />
       <updated>1681123570279</updated>
       <workItem from="1681245245914" duration="10365000" />
+      <workItem from="1681286016914" duration="6809000" />
+      <workItem from="1681293233713" duration="1369000" />
     </task>
     <servers />
   </component>

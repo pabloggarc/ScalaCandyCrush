@@ -46,7 +46,7 @@ class Miclase (args: Array[String]){
             println("la cantidad de borrados es mayor que 5")
             val nuevoTablero = operaciones.reemplazarCaramelo(tableroConX, filaUsuario*numColsTab+colUsuario, borrados, 0) // Si se han borrado 5 caramelos se convierte en B
             println("tablero tras introducir bloque especial")
-            println(operaciones.mostrarTablero(tableroConX, vidasJuego, numColsTab))
+            println(operaciones.mostrarTablero(nuevoTablero, vidasJuego, numColsTab))
 
             val cambios: List[List[Int]] = operaciones.cambiosTablero(nuevoTablero)
             val nuevoTablero2: List[Char] = operaciones.actualizarTablero(nuevoTablero, operaciones.cambiosTablero(nuevoTablero))
@@ -55,13 +55,18 @@ class Miclase (args: Array[String]){
           }
 
         }
-        else if(filaUsuario*numColsTab+colUsuario == 'B' || filaUsuario*numColsTab+colUsuario == 'T' || filaUsuario*numColsTab+colUsuario == 'R'){ //estamos ante un caramelo_seleccionado NO ESPECIAL
-          filaUsuario*numColsTab+colUsuario match {
-            case 'B' => operaciones.bloqueBomba(tablero, filaUsuario*numColsTab+colUsuario)
-            case 'T' => operaciones.bloqueTNT(tablero, filaUsuario*numColsTab+colUsuario)
-            case 'R' => operaciones.bloqueRompecabezas(tablero, filaUsuario*numColsTab+colUsuario, dificultadJuego)
+        else if(caramelo_seleccionado == '7' || caramelo_seleccionado == '8' || caramelo_seleccionado == '9'){ //estamos ante un caramelo_seleccionado NO ESPECIAL
+           val tablero4 = caramelo_seleccionado match {
+
+            case '7' => operaciones.bloqueBomba(tablero, filaUsuario*numColsTab+colUsuario)
+            case '8' => operaciones.bloqueTNT(tablero,filaUsuario*numColsTab+colUsuario)
+            case '9' => operaciones.bloqueRompecabezas(tablero, filaUsuario*numColsTab+colUsuario, dificultadJuego)
           }
-          buclePrincipal(tablero, vidasJuego)
+          println("tablero tras aplicar un bloque especial")
+          println(operaciones.mostrarTablero(tablero4, vidasJuego, numColsTab))
+          val cambios: List[List[Int]] = operaciones.cambiosTablero(tablero4)
+          val nuevoTablero2: List[Char] = operaciones.actualizarTablero(tablero4, operaciones.cambiosTablero(tablero4))
+          buclePrincipal(nuevoTablero2, vidasJuego)
         }
     }
   }

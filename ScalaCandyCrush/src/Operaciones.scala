@@ -83,6 +83,9 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
             case 4 => s"$RESET${BLUE}4$RESET"
             case 5 => s"$RESET${YELLOW}5$RESET"
             case 6 => s"$RESET${MAGENTA}6$RESET"
+            case 7 => "B"
+            case 8 => "T"
+            case 9 => "R"
             case _ => "X"
         }
     }
@@ -288,22 +291,21 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         } else {
             if (borrados == 5 && pos == seleccionado) {
                 println("Voy a poner una B")
-                'B' :: reemplazarCaramelo(tablero.tail, seleccionado, borrados, pos + 1)
+                '7' :: reemplazarCaramelo(tablero.tail, seleccionado, borrados, pos + 1)
 
             } else if (borrados == 6 && pos == seleccionado) {
                 println("Voy a poner una T")
-                'T' :: reemplazarCaramelo(tablero.tail, seleccionado, borrados, pos + 1)
+                '8' :: reemplazarCaramelo(tablero.tail, seleccionado, borrados, pos + 1)
 
             } else if (borrados >= 7 && pos == seleccionado) {
                 println("Voy a poner una R")
-                'R' :: reemplazarCaramelo(tablero.tail, seleccionado, borrados, pos + 1)
+                '9' :: reemplazarCaramelo(tablero.tail, seleccionado, borrados, pos + 1)
 
             } else {
                 println("Continuo con el resto del tablero")
                 tablero.head :: reemplazarCaramelo(tablero.tail, seleccionado, borrados, pos + 1)
             }
         }
-
     }
 
 
@@ -351,10 +353,16 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
             val filaPos = posicion / numCol
             val colPos = posicion % numCol
 
-            if (filaPos >= filaElem - 4 && filaPos <= filaElem + 4 && colPos >= colElem - 4 && colPos <= colElem + 4) {
-                'X' :: bloqueTNTAux(tableroAux.tail, posicion + 1)
+            if (tableroAux == Nil){
+                Nil
+
             } else {
-                tableroAux.head :: bloqueTNTAux(tableroAux.tail, posicion + 1)
+                if (filaPos >= filaElem - 4 && filaPos <= filaElem + 4 && colPos >= colElem - 4 && colPos <= colElem + 4) {
+                    'X' :: bloqueTNTAux(tableroAux.tail, posicion + 1)
+                } else {
+                    tableroAux.head :: bloqueTNTAux(tableroAux.tail, posicion + 1)
+                }
+
             }
         }
 
@@ -365,6 +373,7 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
     def bloqueRompecabezas(tablero: List[Char], elem: Int, dif: Int): List[Char] = {
         val filaElem = elem / numCol
         val colElem = elem % numCol
+
         val r = new Random()
         obtenerCaramelo(tablero, filaElem, colElem)
 
@@ -375,13 +384,13 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         }
 
         def bloqueRompecabezasAux(tableroAux: List[Char], pos: Int): List[Char] = {
-            if (tablero == Nil) {
+            if (tableroAux == Nil) {
                 Nil
             } else {
-                if (tablero.head == tipo || pos == elem) {
+                if (tableroAux.head == tipo || pos == elem) {
                     'X' :: bloqueRompecabezasAux(tableroAux.tail, pos + 1)
                 } else {
-                    tablero.head :: bloqueRompecabezasAux(tableroAux.tail, pos + 1)
+                   tableroAux.head :: bloqueRompecabezasAux(tableroAux.tail, pos + 1)
                 }
             }
         }
