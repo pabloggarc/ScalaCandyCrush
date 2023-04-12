@@ -280,4 +280,114 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         }
     }
 
+
+    def reemplazarCaramelo(tablero: List[Char], seleccionado: Int, borrados: Int, pos: Int): List[Char] = {
+
+        if (tablero == Nil) {
+            Nil
+        } else {
+            if (borrados == 5 && pos == seleccionado) {
+                println("Voy a poner una B")
+                'B' :: reemplazarCaramelo(tablero.tail, seleccionado, borrados, pos + 1)
+
+            } else if (borrados == 6 && pos == seleccionado) {
+                println("Voy a poner una T")
+                'T' :: reemplazarCaramelo(tablero.tail, seleccionado, borrados, pos + 1)
+
+            } else if (borrados >= 7 && pos == seleccionado) {
+                println("Voy a poner una R")
+                'R' :: reemplazarCaramelo(tablero.tail, seleccionado, borrados, pos + 1)
+
+            } else {
+                println("Continuo con el resto del tablero")
+                tablero.head :: reemplazarCaramelo(tablero.tail, seleccionado, borrados, pos + 1)
+            }
+        }
+
+    }
+
+
+    def bloqueBomba(tablero: List[Char], elem: Int): List[Char] = {
+        val r = new Random()
+        val borrador = r.nextInt(2)
+        if (borrador == 1) { //borra las filas
+            bloqueBombaFila(tablero, elem / numCol, 0)
+        } else { //columnas
+            bloqueBombaColumna(tablero, elem % numCol, 0)
+        }
+
+    }
+
+    def bloqueBombaFila(tablero: List[Char], fila: Int, pos: Int): List[Char] = {
+        if (tablero == Nil) {
+            Nil
+        } else {
+            if (fila * numCol <= pos && (fila + 1) * numCol > pos) {
+                'X' :: bloqueBombaFila(tablero.tail, fila, pos + 1)
+            } else {
+                tablero.head :: bloqueBombaFila(tablero.tail, fila, pos + 1)
+            }
+        }
+    }
+
+    def bloqueBombaColumna(tablero: List[Char], columna: Int, pos: Int): List[Char] = {
+        if (tablero == Nil) {
+            Nil
+        } else {
+            if (pos % numCol == columna) {
+                'X' :: bloqueBombaColumna(tablero.tail, columna, pos + 1)
+            } else {
+                tablero.head :: bloqueBombaColumna(tablero.tail, columna, pos + 1)
+            }
+        }
+    }
+
+
+    def bloqueTNT(tablero: List[Char], elem: Int): List[Char] = {
+        val filaElem = elem / numCol
+        val colElem = elem % numCol
+
+        def bloqueTNTAux(tableroAux: List[Char], posicion: Int): List[Char] = {
+            val filaPos = posicion / numCol
+            val colPos = posicion % numCol
+
+            if (filaPos >= filaElem - 4 && filaPos <= filaElem + 4 && colPos >= colElem - 4 && colPos <= colElem + 4) {
+                'X' :: bloqueTNTAux(tableroAux.tail, posicion + 1)
+            } else {
+                tableroAux.head :: bloqueTNTAux(tableroAux.tail, posicion + 1)
+            }
+        }
+
+        bloqueTNTAux(tablero, 0)
+    }
+
+
+    def bloqueRompecabezas(tablero: List[Char], elem: Int, dif: Int): List[Char] = {
+        val filaElem = elem / numCol
+        val colElem = elem % numCol
+        val r = new Random()
+        obtenerCaramelo(tablero, filaElem, colElem)
+
+        val tipo = if (dif == 1) {
+            (r.nextInt(4 - 1 + 1) + 1).toString.charAt(0)
+        } else {
+            (r.nextInt(6 - 1 + 1) + 1).toString.charAt(0)
+        }
+
+        def bloqueRompecabezasAux(tableroAux: List[Char], pos: Int): List[Char] = {
+            if (tablero == Nil) {
+                Nil
+            } else {
+                if (tablero.head == tipo || pos == elem) {
+                    'X' :: bloqueRompecabezasAux(tableroAux.tail, pos + 1)
+                } else {
+                    tablero.head :: bloqueRompecabezasAux(tableroAux.tail, pos + 1)
+                }
+            }
+        }
+
+        bloqueRompecabezasAux(tablero, 0)
+
+    }
+
 }

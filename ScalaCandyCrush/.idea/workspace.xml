@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f2331880-12fa-4634-b25a-50fbf34872f6" name="Changes" comment="" />
+    <list default="true" id="f2331880-12fa-4634-b25a-50fbf34872f6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScalaCandyCrush.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ScalaCandyCrush.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Miclase.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Miclase.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Operaciones.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Operaciones.scala" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +34,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "C:/Users/Pablo/Desktop/ScalaCandyCrush",
     "settings.editor.selected.configurable": "proofread"
   }
@@ -37,7 +43,7 @@
     <configuration name="candy" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="ScalaCandyCrush" />
-      <option name="PROGRAM_PARAMETERS" value="-m 2 10 10" />
+      <option name="PROGRAM_PARAMETERS" value="-m 1 10 10" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -51,8 +57,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1681123570279</updated>
+      <workItem from="1681245245914" duration="10365000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

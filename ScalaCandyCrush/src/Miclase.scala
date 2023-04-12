@@ -33,15 +33,33 @@ class Miclase (args: Array[String]){
           val borrados: Int = operaciones.contarX(tableroConX)
           println("Se han borrado " + borrados + " caramelos")
           println(operaciones.mostrarTablero(tableroConX, vidasJuego, numColsTab))
-          val cambios: List[List[Int]] = operaciones.cambiosTablero(tableroConX)
-          val nuevoTablero: List[Char] = operaciones.actualizarTablero(tableroConX, operaciones.cambiosTablero(tableroConX))
-          buclePrincipal(nuevoTablero, vidasJuego)
+
+          if (borrados == 0) {
+            buclePrincipal(tableroConX, vidasJuego - 1) // Si no se han borrado caramelos se pierde una vida
+
+          } else if (borrados >= 1 && borrados < 5) {
+            val cambios: List[List[Int]] = operaciones.cambiosTablero(tableroConX)
+            val nuevoTablero2: List[Char] = operaciones.actualizarTablero(tableroConX, operaciones.cambiosTablero(tableroConX))
+            buclePrincipal(nuevoTablero2, vidasJuego)
+
+          } else {
+            println("la cantidad de borrados es mayor que 5")
+            val nuevoTablero = operaciones.reemplazarCaramelo(tableroConX, filaUsuario*numColsTab+colUsuario, borrados, 0) // Si se han borrado 5 caramelos se convierte en B
+            println("tablero tras introducir bloque especial")
+            println(operaciones.mostrarTablero(tableroConX, vidasJuego, numColsTab))
+
+            val cambios: List[List[Int]] = operaciones.cambiosTablero(nuevoTablero)
+            val nuevoTablero2: List[Char] = operaciones.actualizarTablero(nuevoTablero, operaciones.cambiosTablero(nuevoTablero))
+            buclePrincipal(nuevoTablero2, vidasJuego)
+
+          }
+
         }
-        else if(caramelo_seleccionado == 'B' || caramelo_seleccionado == 'T' || caramelo_seleccionado == 'R'){ //estamos ante un caramelo_seleccionado NO ESPECIAL
-          caramelo_seleccionado match {
-            case 'B' => //TODO: funcion de bomba
-            case 'T' => //TODO: funcion de TNT
-            case 'R' => //TODO: funcion de rompecabezas
+        else if(filaUsuario*numColsTab+colUsuario == 'B' || filaUsuario*numColsTab+colUsuario == 'T' || filaUsuario*numColsTab+colUsuario == 'R'){ //estamos ante un caramelo_seleccionado NO ESPECIAL
+          filaUsuario*numColsTab+colUsuario match {
+            case 'B' => operaciones.bloqueBomba(tablero, filaUsuario*numColsTab+colUsuario)
+            case 'T' => operaciones.bloqueTNT(tablero, filaUsuario*numColsTab+colUsuario)
+            case 'R' => operaciones.bloqueRompecabezas(tablero, filaUsuario*numColsTab+colUsuario, dificultadJuego)
           }
           buclePrincipal(tablero, vidasJuego)
         }
