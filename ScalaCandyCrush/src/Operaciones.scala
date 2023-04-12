@@ -121,7 +121,7 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
             vecinos match {
                 case Nil =>  Nil // No quedan vecinos por explorar
                 case v :: vs if v < 0 || v >= filas * columnas => buscarRec(vs, visitados) // Posición fuera del tablero
-                case v :: vs if visitados.contains(v) => buscarRec(vs, visitados) // Posición ya visitada y HACER LA FUNCION DE CONTENER!!!!!
+                case v :: vs if (contiene(visitados, v)) => buscarRec(vs, visitados) // Posición ya visitada y HACER LA FUNCION DE CONTENER!!!!!
                 case v :: vs if valorCaramelo != tablero(v) => buscarRec(vs,visitados) // Posición de distinto tipo
                 case v :: vs => // Posición de mismo tipo y no visitada
                     val visitados2 = v::visitados
@@ -141,13 +141,28 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         tablero match {
             case Nil =>
                 Nil
-            case _::t if camino.contains(n) => //hacer la funcion CONTENER!!!
+            case _::t if (contiene(camino, n)) => //hacer la funcion CONTENER!!!
                 println("voy a poner una X")
                 'X' :: marcar(t,camino,n+1)
             case h::t =>
                 h::marcar(t,camino,n+1)
         }
     }
+
+
+    def contiene(lista: List[Int], elemento: Int): Boolean = {
+        def bucle(lst: List[Int]): Boolean = {
+            lst match {
+                case Nil => false
+                case head :: tail =>
+                    if (head == elemento) true
+                    else bucle(tail)
+            }
+        }
+
+        bucle(lista)
+    }
+
 
     /*def recolocarTablero(tablero : List[Char], dificultad : Int) : List[Char] = {
         if (dificultad == 1){
