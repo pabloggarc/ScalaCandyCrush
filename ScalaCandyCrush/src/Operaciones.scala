@@ -327,7 +327,7 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
     def bloqueBomba(tablero: List[Char], elem: Int): List[Char] = {
         val r = new Random()
         val borrador = r.nextInt(2)
-        if (borrador == 1) { //borra las filas
+        if (borrador == 0) { //borra las filas
             bloqueBombaFila(tablero, elem / numCol, 0)
         } else { //columnas
             bloqueBombaColumna(tablero, elem % numCol, 0)
