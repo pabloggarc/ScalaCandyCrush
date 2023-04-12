@@ -21,14 +21,14 @@ class Miclase (args: Array[String]){
       case 0 =>
         println("Fin del juego, te has quedado sin vidas!")
       case _ =>
-        val filaUsuario = pedirUsuarioPos("Fila")
-        val colUsuario = pedirUsuarioPos("Columna")
+        val filaUsuario = pedirUsuarioPos("Fila", tablero)
+        val colUsuario = pedirUsuarioPos("Columna", tablero)
         val caramelo_seleccionado = operaciones.obtenerCaramelo(tablero, filaUsuario, colUsuario)
-        println(caramelo_seleccionado," VALOR este es el caramelo q he seleccionado")
 
         if (caramelo_seleccionado.isDigit && caramelo_seleccionado.asDigit >= 1 & caramelo_seleccionado.asDigit <= 6) {
           val caminoEncontrado = operaciones.buscarCamino(tablero, filaUsuario*numColsTab+colUsuario, numFilasTab, numColsTab)
-          println(caminoEncontrado, "camino ENCONTRADO en MAIN")
+
+
           val tableroConX = operaciones.marcar(tablero, caminoEncontrado,0)
           val borrados: Int = operaciones.contarX(tableroConX)
           println("Se han borrado " + borrados + " caramelos")
@@ -38,17 +38,13 @@ class Miclase (args: Array[String]){
             buclePrincipal(tableroConX, vidasJuego - 1) // Si no se han borrado caramelos se pierde una vida
 
           } else if (borrados >= 1 && borrados < 5) {
-            val cambios: List[List[Int]] = operaciones.cambiosTablero(tableroConX)
             val nuevoTablero2: List[Char] = operaciones.actualizarTablero(tableroConX, operaciones.cambiosTablero(tableroConX))
             buclePrincipal(nuevoTablero2, vidasJuego)
 
           } else {
-            println("la cantidad de borrados es mayor que 5")
             val nuevoTablero = operaciones.reemplazarCaramelo(tableroConX, filaUsuario*numColsTab+colUsuario, borrados, 0) // Si se han borrado 5 caramelos se convierte en B
-            println("tablero tras introducir bloque especial")
             println(operaciones.mostrarTablero(nuevoTablero, vidasJuego, numColsTab))
 
-            val cambios: List[List[Int]] = operaciones.cambiosTablero(nuevoTablero)
             val nuevoTablero2: List[Char] = operaciones.actualizarTablero(nuevoTablero, operaciones.cambiosTablero(nuevoTablero))
             buclePrincipal(nuevoTablero2, vidasJuego)
 
@@ -62,30 +58,35 @@ class Miclase (args: Array[String]){
             case '8' => operaciones.bloqueTNT(tablero,filaUsuario*numColsTab+colUsuario)
             case '9' => operaciones.bloqueRompecabezas(tablero, filaUsuario*numColsTab+colUsuario, dificultadJuego)
           }
-          println("tablero tras aplicar un bloque especial")
           println(operaciones.mostrarTablero(tablero4, vidasJuego, numColsTab))
-          val cambios: List[List[Int]] = operaciones.cambiosTablero(tablero4)
           val nuevoTablero2: List[Char] = operaciones.actualizarTablero(tablero4, operaciones.cambiosTablero(tablero4))
           buclePrincipal(nuevoTablero2, vidasJuego)
         }
     }
   }
 
-  private def pedirUsuarioPos(tipo: String): Int = {
+  private def pedirUsuarioPos(tipo: String, tablero : List[Char]): Int = {
     modoCundy match {
       case 0 =>
+        val posicion = operaciones.mejorCamino(tablero)
         tipo match {
-          case "Fila" =>
+          case "Fila" =>/*
             val rand = new Random()
             val fila = rand.nextInt(numFilasTab)
             println("Fila: " + fila)
-            fila
-          case "Columna" =>
+            fila*/
+            posicion / numFilasTab
+
+          case "Columna" =>/*
             val rand = new Random()
             val col = rand.nextInt(numColsTab)
             println("Columna: " + col)
-            col
+            col*/
+            posicion % numColsTab
+
         }
+
+
       case 1 =>
         import scala.io.StdIn
         println("Introduce " + tipo + ": ")
@@ -96,14 +97,14 @@ class Miclase (args: Array[String]){
               usuario
             } else {
               println("Error: Numero de fila invalida")
-              pedirUsuarioPos(tipo)
+              pedirUsuarioPos(tipo, tablero)
             }
           case "Columna" =>
             if (usuario < numColsTab && usuario >= 0) {
               usuario
             } else {
               println("Error: Numero de columna invalida")
-              pedirUsuarioPos(tipo)
+              pedirUsuarioPos(tipo, tablero)
             }
         }
     }

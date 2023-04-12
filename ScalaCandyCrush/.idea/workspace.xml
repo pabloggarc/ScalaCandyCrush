@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f2331880-12fa-4634-b25a-50fbf34872f6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ScalaCandyCrush/Operaciones.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ScalaCandyCrush/Operaciones.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Miclase.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Miclase.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Operaciones.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Operaciones.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +42,7 @@
     <configuration name="candy" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="ScalaCandyCrush" />
-      <option name="PROGRAM_PARAMETERS" value="-m 1 10 10" />
+      <option name="PROGRAM_PARAMETERS" value="-a 2 10 10" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -59,7 +59,9 @@
       <workItem from="1681245245914" duration="10365000" />
       <workItem from="1681286016914" duration="6809000" />
       <workItem from="1681293233713" duration="1369000" />
-      <workItem from="1681295032353" duration="644000" />
+      <workItem from="1681295032353" duration="1297000" />
+      <workItem from="1681296355607" duration="4000" />
+      <workItem from="1681314378453" duration="3931000" />
     </task>
     <servers />
   </component>

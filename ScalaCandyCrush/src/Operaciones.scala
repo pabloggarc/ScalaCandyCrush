@@ -101,22 +101,10 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         obtenerPosicionLista(tablero, fila * numCol + col)
     }
 
-    /*def buscarCamino(tablero: List[Char], selec: Int, camino: List[Int], visitados: List[Int]): List[Int] ={
-
-        val vecinos: Array[Int] = Array(selec, selec - numCol, selec + numCol, selec - 1, selec + 1)
-        if (vecinos(1) < 0) vecinos(1) = -1
-        if (vecinos(2) >= numFila * numCol) vecinos(2) = -1
-        if (selec % numCol == 0) vecinos(3) = -1
-        if ((selec + 1) % numCol == 0) vecinos(4) = -1
-
-        //falta parte del return (ya que si pones un return deja de fallar) y cambiar el for de la funcion original
-
-    }*/
-
 
     def buscarCamino(tablero: List[Char], selec: Int, filas: Int, columnas: Int): List[Int] = {
         val valorCaramelo = tablero(selec)
-        println(valorCaramelo, "valor del caramelo en funcion BUSCAR")
+        //println(valorCaramelo, "valor del caramelo en funcion BUSCAR")
         def buscarRec(vecinos: List[Int], visitados: List[Int]): List[Int] = {
             vecinos match {
                 case Nil =>  Nil // No quedan vecinos por explorar
@@ -141,8 +129,7 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         tablero match {
             case Nil =>
                 Nil
-            case _::t if (contiene(camino, n)) => //hacer la funcion CONTENER!!!
-                println("voy a poner una X")
+            case _::t if (contiene(camino, n)) =>
                 'X' :: marcar(t,camino,n+1)
             case h::t =>
                 h::marcar(t,camino,n+1)
@@ -163,19 +150,6 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         bucle(lista)
     }
 
-
-    /*def recolocarTablero(tablero : List[Char], dificultad : Int) : List[Char] = {
-        if (dificultad == 1){
-
-        }else{
-
-        }
-    }*/
-
-
-    //creo que la parte de comprobar si un elemento pertenece al camino no es realmente necesaria ya que solo hacemos un camino
-    //lo hacemos desde el seleccionado, por lo cual se deduce que el elemento siempre se va a encontrar en el camino, por lo que
-    //creo que no son necesarios
     def perteneceRec(x: Array[Int], n: Int, y: Int): Boolean = {
         if (n == 0) {
             false
@@ -305,19 +279,18 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
             Nil
         } else {
             if (borrados == 5 && pos == seleccionado) {
-                println("Voy a poner una B")
                 '7' :: reemplazarCaramelo(tablero.tail, seleccionado, borrados, pos + 1)
 
             } else if (borrados == 6 && pos == seleccionado) {
-                println("Voy a poner una T")
+
                 '8' :: reemplazarCaramelo(tablero.tail, seleccionado, borrados, pos + 1)
 
             } else if (borrados >= 7 && pos == seleccionado) {
-                println("Voy a poner una R")
+
                 '9' :: reemplazarCaramelo(tablero.tail, seleccionado, borrados, pos + 1)
 
             } else {
-                println("Continuo con el resto del tablero")
+
                 tablero.head :: reemplazarCaramelo(tablero.tail, seleccionado, borrados, pos + 1)
             }
         }
@@ -414,4 +387,30 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
 
     }
 
+    private def longitudCaminos(tablero: List[Char], posicion: Int): List[List[Int]] ={
+        posicion match {
+            case _ if (posicion == longitud(tablero))=>
+                Nil
+            case _ => List(posicion, longitud(buscarCamino(tablero, posicion, numFila, numCol))) :: longitudCaminos(tablero, posicion+1)
+        }
+    }
+
+    private def longitudMasLarga(longitudesCaminos: List[List[Int]], mejor : Int): Int ={
+        longitudesCaminos match {
+            case Nil => mejor
+            case _ =>  longitudMasLarga(longitudesCaminos.tail, longitudesCaminos.head(1).max(mejor))
+        }
+    }
+
+    private def indiceCamino(listaCaminos: List[List[Int]], valor : Int): Int ={
+        listaCaminos match{
+            case Nil => -1
+            case _ if(listaCaminos.head(1) == valor) => listaCaminos.head(0)
+            case _ => indiceCamino(listaCaminos.tail, valor)
+        }
+    }
+
+    def mejorCamino(tablero: List[Char]): Int ={
+        indiceCamino(longitudCaminos(tablero, 0), longitudMasLarga(longitudCaminos(tablero, 0), 0))
+    }
 }
