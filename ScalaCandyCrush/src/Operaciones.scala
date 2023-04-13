@@ -18,6 +18,13 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         }
     }
 
+    def menor(lista: List[Int]): Int = {
+        lista match {
+            case Nil => Double.PositiveInfinity.toInt
+            case _ => lista.head.min(menor(lista.tail))
+        }
+    }
+
     def calcularDificultad(elems: Int): Int = {
         elems match {
             case 4 => 1
@@ -104,23 +111,33 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
 
     def buscarCamino(tablero: List[Char], selec: Int, filas: Int, columnas: Int): List[Int] = {
         val valorCaramelo = tablero(selec)
-        //println(valorCaramelo, "valor del caramelo en funcion BUSCAR")
+        def analizarVecinos(vecinos: List[Int], i: Int): List[Int] = {
+            //println("Entro a analizar con: " + i + "vecinos: " + vecinos)
+            i match {
+                case n if n > 3 => Nil
+                case 0 if vecinos(i) < 0 => -1 :: analizarVecinos(vecinos, i + 1)
+                case 1 if vecinos(i) >= numFila * numCol => -1 :: analizarVecinos(vecinos, i + 1)
+                case 2 if selec % numCol == 0 => -1 :: analizarVecinos(vecinos, i + 1)
+                case 3 if (selec + 1) % numCol == 0 => -1 :: analizarVecinos(vecinos, i + 1)
+                case _ => vecinos(i) :: analizarVecinos(vecinos, i + 1)
+            }
+        }
         def buscarRec(vecinos: List[Int], visitados: List[Int]): List[Int] = {
             vecinos match {
-                case Nil =>  Nil // No quedan vecinos por explorar
+                case Nil => Nil // No quedan vecinos por explorar
                 case v :: vs if v < 0 || v >= filas * columnas => buscarRec(vs, visitados) // Posición fuera del tablero
                 case v :: vs if (contiene(visitados, v)) => buscarRec(vs, visitados) // Posición ya visitada y HACER LA FUNCION DE CONTENER!!!!!
-                case v :: vs if valorCaramelo != tablero(v) => buscarRec(vs,visitados) // Posición de distinto tipo
+                case v :: vs if valorCaramelo != tablero(v) => buscarRec(vs, visitados) // Posición de distinto tipo
                 case v :: vs => // Posición de mismo tipo y no visitada
                     val visitados2 = v::visitados
                     if (v == selec) { // Se ha encontrado el final
                         v::buscarRec(vs, visitados2)
                     } else { // Se añade al camino
-                        v :: buscarRec(v - columnas :: v + columnas :: v - 1 :: v + 1 :: vs, visitados2)
+                        v :: buscarRec(analizarVecinos(v - columnas :: v + columnas :: v - 1 :: v + 1 :: vs, 0), visitados2)
                     }
             }
         }
-        buscarRec(List(selec - columnas, selec + columnas, selec - 1, selec + 1), Nil)
+        buscarRec(analizarVecinos(List(selec - columnas, selec + columnas, selec - 1, selec + 1), 0), Nil)
     }
 
 
@@ -387,22 +404,43 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
 
     }
 
-    private def longitudCaminos(tablero: List[Char], posicion: Int): List[List[Int]] ={
-        posicion match {
-            case _ if (posicion == longitud(tablero))=>
-                Nil
-            case _ => List(posicion, longitud(buscarCamino(tablero, posicion, numFila, numCol))) :: longitudCaminos(tablero, posicion+1)
+    private def contarTipoCaramelo(tablero: List[Char], tipo: Char): Int = {
+        tablero match {
+            case Nil => 0
+            case _ if tablero.head == tipo => 1 + contarTipoCaramelo(tablero.tail, tipo)
+            case _ => contarTipoCaramelo(tablero.tail, tipo)
         }
     }
 
-    private def longitudMasLarga(longitudesCaminos: List[List[Int]], mejor : Int): Int ={
+    private def cantidadesCaramelos(tablero: List[Char], i: Int): List[Int] = {
+        i match {
+            case x if x == calcularDificultad(numColores) => Nil
+            case _ => contarTipoCaramelo(tablero, i.toString.charAt(0)) :: cantidadesCaramelos(tablero, i + 1)
+        }
+    }
+
+    private def longitudCaminos(tablero: List[Char], posicion: Int): List[List[Int]] = {
+        posicion match {
+            case _ if (posicion == longitud(tablero)) => Nil
+            case _ if tablero(posicion).toInt - '0'.toInt <= 6 => List(posicion, longitud(buscarCamino(tablero, posicion, numFila, numCol))) :: longitudCaminos(tablero, posicion+1)
+            case _ => {
+                tablero(posicion) match {
+                    case '7' => List(posicion, numFila.min(numCol)) :: longitudCaminos(tablero, posicion + 1)
+                    case '8' => List(posicion, contarX(bloqueTNT(tablero, posicion))) :: longitudCaminos(tablero, posicion + 1)
+                    case '9' => List(posicion, menor(cantidadesCaramelos(tablero, 1))) :: longitudCaminos(tablero, posicion + 1)
+                }
+            }
+        }
+    }
+
+    private def longitudMasLarga(longitudesCaminos: List[List[Int]], mejor : Int): Int = {
         longitudesCaminos match {
             case Nil => mejor
             case _ =>  longitudMasLarga(longitudesCaminos.tail, longitudesCaminos.head(1).max(mejor))
         }
     }
 
-    private def indiceCamino(listaCaminos: List[List[Int]], valor : Int): Int ={
+    private def indiceCamino(listaCaminos: List[List[Int]], valor : Int): Int = {
         listaCaminos match{
             case Nil => -1
             case _ if(listaCaminos.head(1) == valor) => listaCaminos.head(0)
@@ -410,7 +448,7 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         }
     }
 
-    def mejorCamino(tablero: List[Char]): Int ={
+    def mejorCamino(tablero: List[Char]): Int = {
         indiceCamino(longitudCaminos(tablero, 0), longitudMasLarga(longitudCaminos(tablero, 0), 0))
     }
 }

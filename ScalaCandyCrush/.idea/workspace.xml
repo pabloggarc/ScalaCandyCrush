@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f2331880-12fa-4634-b25a-50fbf34872f6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Miclase.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Miclase.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Operaciones.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Operaciones.scala" afterDir="false" />
-    </list>
+    <list default="true" id="f2331880-12fa-4634-b25a-50fbf34872f6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,7 +38,7 @@
     <configuration name="candy" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="ScalaCandyCrush" />
-      <option name="PROGRAM_PARAMETERS" value="-a 2 10 10" />
+      <option name="PROGRAM_PARAMETERS" value="-m 1 10 10" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
