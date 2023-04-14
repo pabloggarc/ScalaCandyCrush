@@ -4,6 +4,8 @@ import scala.annotation.{tailrec, unused}
 
 class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
 
+    /*-----------------------UTILIDADES-----------------------*/
+
     def longitud(array: List[Any]): Int = {
         array match {
             case Nil => 0
@@ -18,10 +20,25 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         }
     }
 
-    def menor(lista: List[Int]): Int = {
+    private def menorAux(lista: List[Int]): Int = {
         lista match {
             case Nil => Double.PositiveInfinity.toInt
-            case _ => lista.head.min(menor(lista.tail))
+            case _ => lista.head.min(menorAux(lista.tail))
+        }
+    }
+
+    def menor(lista: List[Int]): Int = {
+        lista match {
+            case Nil => -1
+            case _ => menorAux(lista)
+        }
+    }
+
+    def union(l1: List[Int], l2: List[Int]): List[Int] = {
+        l2 match {
+            case Nil => l1
+            case _ if contiene(l1, l2.head) => union(l1, l2.tail)
+            case _ => union(l1 :+ l2.head, l2.tail)
         }
     }
 
@@ -49,7 +66,40 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         }
     }
 
-    //funcion para crear un tablero con n*m dimensiones
+    private def obtenerPosicionLista(tablero: List[Char], i: Int): Char = {
+        i match {
+            case 0 => tablero.head
+            case _ => obtenerPosicionLista(tablero.tail, i - 1)
+        }
+    }
+
+    def contiene(lista: List[Int], elemento: Int): Boolean = {
+        def bucle(lst: List[Int]): Boolean = {
+            lst match {
+                case Nil => false
+                case head :: tail =>
+                    if (head == elemento) true
+                    else bucle(tail)
+            }
+        }
+
+        bucle(lista)
+    }
+
+    /*-----------------------OPERACIONES TABLERO-----------------------*/
+
+    def obtenerCaramelo(tablero: List[Char], fila: Int, col: Int): Char = {
+        obtenerPosicionLista(tablero, fila * numCol + col)
+    }
+
+    def contarX(tablero: List[Char]): Int = {
+        tablero match {
+            case Nil => 0
+            case n if n.head == 'X' => 1 + contarX(tablero.tail)
+            case _ => contarX(tablero.tail)
+        }
+    }
+
     def generarTablero(i: Int, dif: Int, f: Int => Char): List[Char] = {
         i match {
             case 0 => Nil
@@ -60,7 +110,7 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
     private def mostrarTableroAux(tablero: List[Char], i: Int, m: Int, mFila: Boolean): String = {
         i match {
             case _ if tablero == Nil => ""
-            case _ if i % m == 0 => " | " + imprimirCaramelo(tablero.head.toInt-'0'.toInt)+ " | \n" +  mostrarTableroAux(tablero.tail, i + 1, m, true)
+            case _ if i % m == 0 => " | " + imprimirCaramelo(tablero.head.toInt-'0'.toInt)+ " | \n\t\t\t\t" +  mostrarTableroAux(tablero.tail, i + 1, m, true)
             case _ if mFila => i / m + " | " + imprimirCaramelo(tablero.head.toInt-'0'.toInt) + mostrarTableroAux(tablero.tail, i + 1, m, false)
             case _ => " | " + imprimirCaramelo(tablero.head.toInt-'0'.toInt) + mostrarTableroAux(tablero.tail, i + 1, m, false)
         }
@@ -70,15 +120,15 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         inicio match {
             case 1 => " " + cabeceraTablero(m, 0, total)
             case 0 => m match {
-                case 0 => " | \n " + " " + "-" * ((total * 4) + 1) + " \n"
+                case 0 => " | \n\t\t\t\t " + " " + "-" * ((total * 4) + 1) + " \n\t\t\t\t"
                 case _ => " | " + (total - m).toString + cabeceraTablero(m - 1, inicio, total)
             }
         }
     }
 
     def mostrarTablero(tablero: List[Char], vidas: Int, m: Int): String = {
-        cabeceraTablero(m, 1, m) + mostrarTableroAux(tablero, 1, m, true) +
-        s"\nVIDAS: $RESET$RED" + " ♥" * vidas + s"$RESET"
+        "\n" + s"\nVIDAS: $RESET$RED" + " ❤" * vidas + s"$RESET\n\n\t\t\t\t" +
+          cabeceraTablero(m, 1, m) + mostrarTableroAux(tablero, 1, m, true) + "\n"
     }
 
     //imprimir los caramelos con colores
@@ -95,17 +145,6 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
             case 9 => "R"
             case _ => "X"
         }
-    }
-
-    private def obtenerPosicionLista(tablero: List[Char], i: Int): Char = {
-        i match {
-            case 0 => tablero.head
-            case _ => obtenerPosicionLista(tablero.tail, i - 1)
-        }
-    }
-
-    def obtenerCaramelo(tablero: List[Char], fila: Int, col: Int): Char = {
-        obtenerPosicionLista(tablero, fila * numCol + col)
     }
 
     def analizarVecinos(vecinos: List[Int], selec: Int, i: Int): List[Int] = {
@@ -125,12 +164,12 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
             case _ => {
                 val tipoCaramelo: Char = tablero(selec)
                 tablero(vecinos.head) match {
-                    case x if x == tipoCaramelo && !pertenece(visitados.toArray, longitud(visitados), vecinos.head) =>
-                        explorarVecinos(tablero, camino :+ vecinos.head, visitados :+ vecinos.head,
-                        vecinos.tail, selec) ++ //Cambiar este +!!!
-                        explorarVecinos(tablero, List(vecinos.head), visitados :+ vecinos.head,
+                    case x if x == tipoCaramelo && !contiene(visitados, vecinos.head) =>
+                        union(explorarVecinos(tablero, camino :+ vecinos.head, visitados :+ vecinos.head,
+                        vecinos.tail, selec),
+                        explorarVecinos(tablero, Nil, visitados :+ vecinos.head,
                         analizarVecinos(List(vecinos.head - numCol, vecinos.head + numCol, vecinos.head - 1, vecinos.head + 1),
-                            vecinos.head, 0), vecinos.head)
+                            vecinos.head, 0), vecinos.head))
                     case _ =>
                         explorarVecinos(tablero, camino, visitados :+ vecinos.head, vecinos.tail, selec)
                 }
@@ -139,7 +178,6 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
     }
 
     def buscarCamino(tablero: List[Char], selec: Int): List[Int] = {
-        val caramelo: Char = tablero(selec)
         val vecinos: List[Int] = analizarVecinos(List(selec - numCol, selec + numCol, selec - 1, selec + 1), selec, 0)
         val camino: List[Int] = explorarVecinos(tablero, List(selec), List(selec), vecinos, selec)
         camino match {
@@ -150,39 +188,10 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
 
     def marcar(tablero: List[Char], camino: List[Int],n:Int): List[Char] = {
         tablero match {
-            case Nil =>
-                Nil
-            case _::t if (contiene(camino, n)) =>
-                'X' :: marcar(t,camino,n+1)
-            case h::t =>
-                h::marcar(t,camino,n+1)
+            case Nil => Nil
+            case _ :: t if (contiene(camino, n)) => 'X' :: marcar(t, camino, n + 1)
+            case h :: t => h :: marcar(t, camino, n + 1)
         }
-    }
-
-
-    def contiene(lista: List[Int], elemento: Int): Boolean = {
-        def bucle(lst: List[Int]): Boolean = {
-            lst match {
-                case Nil => false
-                case head :: tail =>
-                    if (head == elemento) true
-                    else bucle(tail)
-            }
-        }
-
-        bucle(lista)
-    }
-
-    def perteneceRec(x: Array[Int], n: Int, y: Int): Boolean = {
-        if (n == 0) {
-            false
-        } else {
-            x(n - 1) == y || perteneceRec(x, n - 1, y)
-        }
-    }
-
-    def pertenece(x: Array[Int], n: Int, y: Int): Boolean = {
-        perteneceRec(x, n, y)
     }
 
     def contarXdebajo(tablero: List[Char], elem: Int): Int = {
@@ -286,15 +295,6 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
     def actualizarTablero(tablero: List[Char], actualizaciones: List[List[Int]]): List[Char] = {
         nuevoTablero(Array.ofDim[Char](longitud(tablero)), actualizaciones)
     }
-
-    def contarX(tablero: List[Char]): Int = {
-        tablero match {
-            case Nil => 0
-            case n if n.head == 'X' => 1 + contarX(tablero.tail)
-            case _ => contarX(tablero.tail)
-        }
-    }
-
 
     def reemplazarCaramelo(tablero: List[Char], seleccionado: Int, borrados: Int, pos: Int): List[Char] = {
 
@@ -418,9 +418,9 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         }
     }
 
-    private def cantidadesCaramelos(tablero: List[Char], i: Int): List[Int] = {
+     def cantidadesCaramelos(tablero: List[Char], i: Int): List[Int] = {
         i match {
-            case x if x == calcularDificultad(numColores) => Nil
+            case x if x > numColores => Nil
             case _ => contarTipoCaramelo(tablero, i.toString.charAt(0)) :: cantidadesCaramelos(tablero, i + 1)
         }
     }
