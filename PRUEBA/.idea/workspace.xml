@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f92ed28f-124a-4bc2-960c-0cfd1266931d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoAlex.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ProyectoAlex.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Miclase.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Miclase.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Operaciones.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Operaciones.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/.idea/libraries/sbt__org_scala_lang_scala_library_2_13_10_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/.idea/libraries/sbt__org_scala_lang_scala_library_2_13_10_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/.idea/modules/ScalaCandyCrush-build.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/.idea/modules/ScalaCandyCrush-build.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/.idea/modules/ScalaCandyCrush.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/.idea/modules/ScalaCandyCrush.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/.idea/sbt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/.idea/sbt.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/.idea/scala_compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/.idea/scala_compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/build.sbt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/build.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/build.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/config-classes/$bd09ae9fd75243947a6c.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/config-classes/$bd09ae9fd75243947a6c.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/_global/update/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/_global/update/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/compile/compileIncremental/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/compile/compileIncremental/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/compile/copyResources/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/compile/copyResources/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/compile/dependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/compile/dependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/compile/exportedProducts/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/compile/exportedProducts/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/compile/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/compile/externalDependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/compile/incOptions/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/compile/incOptions/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/compile/internalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/compile/internalDependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/compile/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/compile/managedClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/compile/unmanagedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/compile/unmanagedClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/compile/unmanagedJars/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/compile/unmanagedJars/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/runtime/dependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/runtime/dependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/runtime/exportedProducts/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/runtime/exportedProducts/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/runtime/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/runtime/externalDependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/runtime/fullClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/runtime/fullClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/runtime/internalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/runtime/internalDependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/runtime/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/runtime/managedClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/runtime/unmanagedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/runtime/unmanagedClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/runtime/unmanagedJars/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/project/target/streams/runtime/unmanagedJars/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/src/main/scala/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/src/main/scala/Main.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/src/main/scala/Operaciones.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/src/main/scala/Operaciones.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/.history3" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/.history3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/global-logging/sbt-global-log11368351567981666455.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/global-logging/sbt-global-log11368351567981666455.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/global-logging/sbt-global-log16160306548908472518.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/global-logging/sbt-global-log16160306548908472518.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/global-logging/sbt-global-log330147551811988327.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/global-logging/sbt-global-log330147551811988327.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/global-logging/sbt-global-log3302638762466081200.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/global-logging/sbt-global-log3302638762466081200.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/global-logging/sbt-global-log4969980019649722883.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/global-logging/sbt-global-log4969980019649722883.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/global-logging/sbt-global-log7449407452224804327.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/global-logging/sbt-global-log7449407452224804327.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/_global/_global/dumpStructure/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/_global/_global/dumpStructure/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/_global/update/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/_global/update/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/_global/updateClassifiers/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/_global/updateClassifiers/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/compile/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/compile/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/compileIncremental/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/compileIncremental/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/copyResources/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/copyResources/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/dependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/dependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/exportedProductJars/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/exportedProductJars/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/exportedProducts/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/exportedProducts/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/externalDependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/incOptions/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/incOptions/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/internalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/internalDependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/managedClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/packageBin/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/packageBin/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/run/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/run/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/unmanagedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/unmanagedClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/unmanagedJars/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/compile/unmanagedJars/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/runtime/dependencyClasspathAsJars/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/runtime/dependencyClasspathAsJars/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/runtime/exportedProductJars/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/runtime/exportedProductJars/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/runtime/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/runtime/externalDependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/runtime/fullClasspathAsJars/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/runtime/fullClasspathAsJars/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/runtime/internalDependencyAsJars/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/runtime/internalDependencyAsJars/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/runtime/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/runtime/managedClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/runtime/unmanagedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/runtime/unmanagedClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/runtime/unmanagedJars/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/runtime/unmanagedJars/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/test/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/test/externalDependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/test/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/test/managedClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/test/unmanagedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/test/unmanagedClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/test/unmanagedJars/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../ScalaCandyCrush/target/streams/test/unmanagedJars/_global/streams/export" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="2O5vEATywk8IIe1VekXBvRtqjzK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/pgarc/Documents/GitHub/ScalaCandyCrush/ScalaCandyCrush"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f92ed28f-124a-4bc2-960c-0cfd1266931d" name="Changes" comment="" />
+      <created>1680863142556</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680863142556</updated>
+    </task>
+    <servers />
+  </component>
+</project>

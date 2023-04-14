@@ -16,7 +16,7 @@ class Miclase (args: Array[String]){
   private def buclePrincipal(tablero: List[Char], vidasJuego: Int): Unit = {
 
     println(operaciones.mostrarTablero(tablero, vidasJuego, numColsTab))
-    println("La mejor opción es --> " + operaciones.mejorCamino(tablero))
+    //println("La mejor opción es --> " + operaciones.mejorCamino(tablero))
 
     vidasJuego match {
       case 0 =>
@@ -27,7 +27,7 @@ class Miclase (args: Array[String]){
         val caramelo_seleccionado = operaciones.obtenerCaramelo(tablero, filaUsuario, colUsuario)
 
         if (caramelo_seleccionado.isDigit && caramelo_seleccionado.asDigit >= 1 & caramelo_seleccionado.asDigit <= 6) {
-          val caminoEncontrado = operaciones.buscarCamino(tablero, filaUsuario*numColsTab+colUsuario, numFilasTab, numColsTab)
+          val caminoEncontrado = operaciones.buscarCamino(tablero, filaUsuario*numColsTab+colUsuario)
           val tableroConX = operaciones.marcar(tablero, caminoEncontrado,0)
           val borrados: Int = operaciones.contarX(tableroConX)
 
