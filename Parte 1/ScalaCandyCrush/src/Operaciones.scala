@@ -86,6 +86,18 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         bucle(lista)
     }
 
+    private def reemplazarPosicion(lista: List[Char], pos: Int, valor: Char): List[Char] = {
+        lista match {
+            case Nil => Nil
+            case _ => {
+                pos match {
+                    case 0 => valor :: lista.tail
+                    case _ => lista.head :: reemplazarPosicion(lista.tail, pos - 1, valor)
+                }
+            }
+        }
+    }
+
     /*-----------------------OPERACIONES TABLERO-----------------------*/
 
     def obtenerCaramelo(tablero: List[Char], fila: Int, col: Int): Char = {
@@ -282,18 +294,14 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
          dejarDefinitivos(recolocarTableroAux(tablero, 0), List())
      }
 
-    private def nuevoTablero(nTablero: Array[Char], actualizaciones: List[List[Int]]): List[Char] = {
+    def actualizarTablero(nTablero: List[Char], actualizaciones: List[List[Int]]): List[Char] = {
         actualizaciones match {
-            case Nil => nTablero.toList
+            case Nil => nTablero
             case _ => {
-                nTablero(actualizaciones.head(0)) = actualizaciones.head(1).toString.charAt(0)
-                nuevoTablero(nTablero, actualizaciones.tail)
+                actualizarTablero(reemplazarPosicion(nTablero, actualizaciones.head(0),
+                    actualizaciones.head(1).toString.charAt(0)), actualizaciones.tail)
             }
         }
-    }
-
-    def actualizarTablero(tablero: List[Char], actualizaciones: List[List[Int]]): List[Char] = {
-        nuevoTablero(Array.ofDim[Char](longitud(tablero)), actualizaciones)
     }
 
     def reemplazarCaramelo(tablero: List[Char], seleccionado: Int, borrados: Int, pos: Int): List[Char] = {

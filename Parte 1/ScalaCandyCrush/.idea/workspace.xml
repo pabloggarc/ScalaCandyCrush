@@ -45,7 +45,7 @@
     <configuration name="candy" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="ScalaCandyCrush" />
-      <option name="PROGRAM_PARAMETERS" value="-a 2 10 10" />
+      <option name="PROGRAM_PARAMETERS" value="-m 1 10 10" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
