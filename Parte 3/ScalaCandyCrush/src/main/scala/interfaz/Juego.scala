@@ -5,6 +5,7 @@ import ui.{PanelJuego, PanelTablero, PanelVidas}
 import scala.util.Random
 import java.io.File
 import javax.sound.sampled._
+import javax.swing.ImageIcon
 import scala.swing._
 
 class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainFrame {
@@ -17,6 +18,7 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
 
   title = "Candy Crush" //Titulo de la ventana
   preferredSize = new Dimension(800, 800) //Tamaño de la ventana
+  resizable = false
   visible = true //Mostrar la ventana
   centerOnScreen() //Centrar la ventana en la pantalla
 
@@ -151,6 +153,9 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
     }
     recargarComponentes() //Recargamos los componentes
   }
+
+  val icono = new ImageIcon("src/img/icono.png")
+  iconImage = icono.getImage
 
   centerOnScreen()
 }

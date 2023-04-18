@@ -1,6 +1,8 @@
 package ui
 import java.io.File
 import javax.imageio.ImageIO
+import java.awt.Font
+import javax.swing.border.EmptyBorder
 import scala.swing._
 
 class PanelParametros (numFilas: TextField,
@@ -8,12 +10,18 @@ class PanelParametros (numFilas: TextField,
                        nivelDificultadComboBox: Component,
                        modoJuegoComboBox: Component,
                        parametrosButton: Button) extends BoxPanel (Orientation.Vertical){ //panel de parametros para poner fondo
-  contents += Swing.VStrut(100) // Espacio vertical
-
-  contents += new Label("Parámetros del tablero") // Etiqueta para los parámetros del tablero
-  contents += Swing.VStrut(110) // Espacio vertical
+  contents += new GridPanel(1, 1) {
+    contents += new Label("Parámetros del tablero") { // Etiqueta para los parámetros del tablero
+      font = new Font("Dialog", Font.BOLD, 16) // Tamaño de fuente de 16
+      xAlignment = scala.swing.Alignment.Center // Alinear horizontalmente el componente al centro
+    }
+    opaque = false
+  }
+  contents += Swing.VStrut(50) // Espacio vertical
   contents += new GridPanel(1, 2) { // Panel con dos columnas
-    contents += new Label("Número de filas:") // Etiqueta para el número de filas
+    contents += new Label("Número de filas:") { // Etiqueta para el número de filas
+      font = new Font("Dialog", Font.BOLD, 16) // Tamaño de fuente de 16
+    }
     contents += numFilas // Campo de texto para el número de filas
     opaque = false // Hacer transparente el panel
   }
@@ -21,7 +29,9 @@ class PanelParametros (numFilas: TextField,
   contents += Swing.VStrut(20) // Espacio vertical
 
   contents += new GridPanel(1, 2) { // Panel con dos columnas
-    contents += new Label("Número de columnas:") // Etiqueta para el número de columnas
+    contents += new Label("Número de columnas:") { // Etiqueta para el número de columnas
+      font = new Font("Dialog", Font.BOLD, 16) // Tamaño de fuente de 16
+    }
     contents += numCol // Campo de texto para el número de columnas
     opaque = false // Hacer transparente el panel
   }
@@ -29,7 +39,9 @@ class PanelParametros (numFilas: TextField,
   contents += Swing.VStrut(20) // Espacio vertical
 
   contents += new GridPanel(1, 2) { // Panel con dos columnas
-    contents += new Label("Nivel de dificultad:") // Etiqueta para el nivel de dificultad
+    contents += new Label("Nivel de dificultad:") { // Etiqueta para el nivel de dificultad
+      font = new Font("Dialog", Font.BOLD, 16) // Tamaño de fuente de 16
+    }
     contents += nivelDificultadComboBox // ComboBox para el nivel de dificultad
     opaque = false // Hacer transparente el panel
   }
@@ -37,11 +49,13 @@ class PanelParametros (numFilas: TextField,
   contents += Swing.VStrut(20) // Espacio vertical
 
   contents += new GridPanel(1, 2) { // Panel con dos columnas
-    contents += new Label("Modo de juego:") // Etiqueta para el modo de juego
+    contents += new Label("Modo de juego:") { // Etiqueta para el modo de juego
+      font = new Font("Dialog", Font.BOLD, 16) // Tamaño de fuente de 16
+    }
     contents += modoJuegoComboBox // ComboBox para el modo de juego
     opaque = false // Hacer transparente el panel
   }
-  contents += Swing.VStrut(220) // Espacio vertical
+  contents += Swing.VStrut(50) // Espacio vertical
 
   // Panel con los botones
   contents += new FlowPanel(FlowPanel.Alignment.Center)(parametrosButton) {
@@ -57,5 +71,7 @@ class PanelParametros (numFilas: TextField,
     val imagen = ImageIO.read(new File("src/img/fondo2.jpg")) // Obtener la imagen de fondo
     g.drawImage(imagen, 0, 0, size.width, size.height, null) // Pintar la imagen de fondo
   }
+
+
 
 }

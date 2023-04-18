@@ -1,5 +1,3 @@
 [debug] not up to date. inChanged = true, force = false
-[debug] Updating ProjectRef(uri("file:/C:/Users/Pablo/Desktop/ScalaCandyCrush/project/"), "scalacandycrush-build")...
-[warn] Unrecognized repository Scala Plugin Bundled Repository, ignoring it
-[warn] Unrecognized repository Scala Plugin Bundled Repository, ignoring it
-[debug] Done updating ProjectRef(uri("file:/C:/Users/Pablo/Desktop/ScalaCandyCrush/project/"), "scalacandycrush-build")
+[debug] Updating ProjectRef(uri("file:/C:/Users/Usuario/Desktop/ScalaCandyCrush/Parte%203/ScalaCandyCrush/project/"), "scalacandycrush-build")...
+[debug] Done updating ProjectRef(uri("file:/C:/Users/Usuario/Desktop/ScalaCandyCrush/Parte%203/ScalaCandyCrush/project/"), "scalacandycrush-build")

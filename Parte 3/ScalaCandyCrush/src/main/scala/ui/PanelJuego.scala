@@ -33,7 +33,7 @@ class PanelJuego(titulo: Label,
   override def paintComponent(g: Graphics2D): Unit = {
     super.paintComponent(g)
 
-    val imagen = ImageIO.read(new File("src/img/FondoTablero.png")) // Obtener la imagen de fondo
+    val imagen = ImageIO.read(new File("src/img/fondo3.jpg")) // Obtener la imagen de fondo
     g.drawImage(imagen, 0, 0, size.width, size.height, null) // Pintar la imagen de fondo
   }
 }

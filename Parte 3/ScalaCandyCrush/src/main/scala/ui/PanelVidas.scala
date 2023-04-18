@@ -12,8 +12,8 @@ class PanelVidas extends FlowPanel {
   opaque = false // Hacer transparente el panel
   contents += textoVidas // Agregar el texto de vidas
 
-  private val rutaCorazonLleno: String = "src/imagenesCandy/VidaLlena.png" // Ruta del corazón
-   private val rutaCorazonVacio: String = "src/imagenesCandy/VidaVacia.png" // Ruta del corazón
+  private val rutaCorazonLleno: String = "src/img/VidaLlena.png" // Ruta del corazón
+  private val rutaCorazonVacio: String = "src/img/VidaVacia.png" // Ruta del corazón
   private val corazones: List[Label] = setCorazones(5) // Lista de corazones
 
   private def setCorazones(n: Int): List[Label]= { // Método que crea los corazones
