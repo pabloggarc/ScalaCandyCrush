@@ -1,0 +1,8 @@
+[debug] > Exec(main, None, None)
+[error] Not a valid command: main (similar: alias)
+[error] Not a valid project ID: main
+[error] Expected ':'
+[error] Not a valid key: main (similar: mappings, mainClass, runMain)
+[error] main
+[error]     ^
+[debug] > Exec(idea-shell, None, None)
