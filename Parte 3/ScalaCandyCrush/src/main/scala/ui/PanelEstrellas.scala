@@ -28,27 +28,39 @@ class PanelEstrellas extends FlowPanel {
     }
   }
 
-  def actualizarEstrellas(puntos: Int): Unit = actualizarEstrellas(puntos, 3, estrellas)
+  private var puntos: Int = 0
+
+
+  def actualizarEstrellas(puntosNuevos: Int): Unit ={
+    puntos += puntosNuevos
+    actualizarEstrellas(puntos, 3, estrellas)
+  }
 
 
   private def actualizarEstrellas(puntos: Int, pos: Int, estr: List[Label]): Unit = {
+
+    println("voy a actualizar las estrellas y tengo estos puntos: "+ puntos)
     if (pos > 0) { // Si aún no se han actualizado todas las estrellas
-      val estrella = estr.head // Obtener la primera estrella de la lista
       if (puntos >= 15000 && puntos < 30000) {
         estrellas(0).icon = new ImageIcon(new Imagenes(estrellaLlena).getImage.getScaledInstance(25, 25, Image.SCALE_REPLICATE))
+
+        println("Voy a cambiar la primera estrella")
       } else if (puntos >= 30000 && puntos < 45000) {
         estrellas(1).icon = new ImageIcon(new Imagenes(estrellaLlena).getImage.getScaledInstance(25, 25, Image.SCALE_REPLICATE))
+        println("Voy a cambiar la segunda estrella")
       } else if (puntos >= 45000 && puntos < 60000) {
         estrellas(2).icon = new ImageIcon(new Imagenes(estrellaLlena).getImage.getScaledInstance(25, 25, Image.SCALE_REPLICATE))
+        println("Voy a cambiar la tercera estrella")
       } else if (puntos >= 100000) {
+        println("Voy a poner las estrellas azules")
         estrellas(0).icon = new ImageIcon(new Imagenes(estrellaAzul).getImage.getScaledInstance(25, 25, Image.SCALE_REPLICATE))
         estrellas(1).icon = new ImageIcon(new Imagenes(estrellaAzul).getImage.getScaledInstance(25, 25, Image.SCALE_REPLICATE))
         estrellas(2).icon = new ImageIcon(new Imagenes(estrellaAzul).getImage.getScaledInstance(25, 25, Image.SCALE_REPLICATE))
       }
-
+      estr.head.visible = true // Hacer visible la primera estrella
+      actualizarEstrellas(puntos, pos - 1, estr.tail) // Actualizar las siguientes estrellas
     }
   }
-
 
 }
 
