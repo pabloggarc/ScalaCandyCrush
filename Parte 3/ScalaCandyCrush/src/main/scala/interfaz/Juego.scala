@@ -1,6 +1,6 @@
 package interfaz
 import logica.Operaciones
-import ui.{PanelJuego, PanelTablero, PanelVidas}
+import ui.{PanelEstrellas, PanelJuego, PanelPuntuacion, PanelTablero, PanelVidas}
 
 import scala.util.Random
 import java.io.File
@@ -31,6 +31,8 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
 
   private val panelTablero = new PanelTablero(numFilas, numCol, this, modoJuego)
   private val vidas = new PanelVidas //Panel para las
+  private val puntuaciones = new PanelPuntuacion
+  private val estrellas = new PanelEstrellas
   private val titulo = new Label("SCALA CANDY CRUSH") //Titulo del juego
   private val botonAutomatico = new Button("PASO SIGUIENTE") { //Boton para el modo automatico
     reactions += { //Reaccionar al pulsar el boton
@@ -38,10 +40,11 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
     }
   }
 
-  contents = new PanelJuego(panelTablero, vidas, botonAutomatico, modoJuego)
+  contents = new PanelJuego(panelTablero, vidas, puntuaciones, estrellas, botonAutomatico, modoJuego)
   //--------------------------------------------------ATENCION ESTACION EN CURVA---------------------------------------
   private var tablero: List[Char] = Nil
   private var vidasJuego: Int = 5
+  private var puntos: Int = 0
   //----------------------------------------AL SALIR TENGA CUIDADO PARA NO INTRODUCIR EL PIE ENTRE COCHE Y ANDEN----------------------------------------------------
 
   def iniciar(): Unit = {
@@ -50,10 +53,11 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
   }
 
   private def recargarComponentes(): Unit = {
+    println(operaciones.mostrarTablero(tablero, vidasJuego, numCol))
     panelTablero.actualizarTablero(tablero) //Actualizar el tablero
     vidas.actualizarVidas(vidasJuego) //Actualizar las vidas
-    operaciones.mostrarTablero(tablero, vidasJuego, numCol) //Imprimir el tablero por consola
-
+    puntuaciones.actualizarPuntos(puntos)
+    estrellas.actualizarEstrellas(puntos)
     this.repaint() //Repintar la ventana
   }
 
@@ -104,6 +108,7 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
           println("Se ha seleccionado la fila " + filaUser + " y la columna " + colUser)
           println("Se han borrado " + borrados + " caramelos")
           println(operaciones.mostrarTablero(tablero, vidasJuego, numCol))
+          puntos += (150 * borrados) - puntos
 
           if (borrados == 0) {
             println("¡Has perdido una vida " + "❤" * (vidasJuego - 1) + "\uD83D\uDC94!")

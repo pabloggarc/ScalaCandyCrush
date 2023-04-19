@@ -21,21 +21,25 @@ class ObtencionParametros extends MainFrame {
       font = new Font("Dialog", Font.PLAIN, 16) // Tamaño de fuente de 16
       reactions += {
         case ButtonClicked(_) =>
-          val filas = filasField.text.toInt // Obtener las filas
-          val columnas = columnasField.text.toInt // Obtener las columnas
-          val dificultad = dificultadCombo.selection.item match { // Obtener el nivel de dificultad
-            case 1 => 1
-            case _ => 2
-          }
-          val modo = modoCombo.selection.item match { // Obtener el modo de juego
-            case "-m" => 1
-            case _ => 0
-          }
-          val juegoFrame = new Juego(filas, columnas, dificultad, modo) // Crear el juego
+          try {
+            val filas = filasField.text.toInt // Obtener las filas
+            val columnas = columnasField.text.toInt // Obtener las columnas
+            val dificultad = dificultadCombo.selection.item match { // Obtener el nivel de dificultad
+              case 1 => 1
+              case _ => 2
+            }
+            val modo = modoCombo.selection.item match { // Obtener el modo de juego
+              case "-m" => 1
+              case _ => 0
+            }
+            val juegoFrame = new Juego(filas, columnas, dificultad, modo) // Crear el juego
 
-          ObtencionParametros.this.dispose() // Cerrar la ventana de obtención de parámetros
-          juegoFrame.iniciar() // Iniciar el juego
-
+            ObtencionParametros.this.dispose() // Cerrar la ventana de obtención de parámetros
+            juegoFrame.iniciar() // Iniciar el juego
+          } catch {
+            case _: Throwable => // Si hay un error
+              Dialog.showMessage(null, "Ingresa datos validos", "Error", Dialog.Message.Error) // Mostrar un mensaje de error
+          }
       }
     }
 
