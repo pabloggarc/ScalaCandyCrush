@@ -4,24 +4,20 @@ import javax.imageio.ImageIO
 import java.awt.Font
 import scala.swing._
 
-class PanelJuego(titulo: Label,
-                          panelTablero: PanelTablero,
+class PanelJuego(panelTablero: PanelTablero,
                           vidas: PanelVidas,
                           botonAutomatico: Button,
                           modoJuego: Int) extends BorderPanel{
-  private val botonSalir = new Button("SALIR") {
+  private val botonSalir = new Button("Terminar partida") {
     reactions += {
       case _ => sys.exit(0)
     }
   }
-
-  titulo.font = new Font("Calibri", java.awt.Font.BOLD, 20) // Fuente del título
-
-  layout(titulo) = BorderPanel.Position.North // Posición del título
+  val contadorBorrados = new Label("Caramelos borrados: X") {font = new Font("Arial", Font.PLAIN,20)}
   layout(panelTablero) = BorderPanel.Position.Center // Posición del panel del tablero
-
-  layout(new GridPanel(1,2) { // Panel de dos columnas
+  layout(new GridPanel(1, 3) { // Panel de dos columnas
     contents += vidas // Agregar el panel de las vidas
+    contents += contadorBorrados
     if(modoJuego == 0){
       contents += botonAutomatico // Agregar el botón automático
     }

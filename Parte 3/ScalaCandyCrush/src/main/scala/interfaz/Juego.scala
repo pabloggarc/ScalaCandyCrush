@@ -38,7 +38,7 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
     }
   }
 
-  contents = new PanelJuego(titulo,panelTablero,vidas,botonAutomatico,modoJuego)
+  contents = new PanelJuego(panelTablero, vidas, botonAutomatico, modoJuego)
   //--------------------------------------------------ATENCION ESTACION EN CURVA---------------------------------------
   private var tablero: List[Char] = Nil
   private var vidasJuego: Int = 5

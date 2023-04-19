@@ -16,7 +16,7 @@ class VentanaPrincipal extends MainFrame {
   title = "Scala Candy Crush" //Titulo de la ventana
   val imagen = ImageIO.read(new File("src/img/Portada2.png"))
   resizable = false //tamano fijo de la ventana
-  preferredSize = new Dimension((imagen.getWidth() * 0.7).toInt, (imagen.getHeight() * 0.7).toInt) //tamano de la ventana
+  preferredSize = new Dimension((imagen.getWidth() * 0.55).toInt, (imagen.getHeight() * 0.55).toInt) //tamano de la ventana
 
   val jugar = new Button {  //Boton para jugar
     text = "JUGAR"
