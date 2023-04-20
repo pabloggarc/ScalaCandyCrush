@@ -73,7 +73,7 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
     //Mostrar la posicion del caramelo optimo
     Dialog.showMessage(contents.head, "Fila: " + filaOpt + ", columna: " + colOpt, title = "Posición óptima:")
 
-    //Thread.sleep(2000)
+    Thread.sleep(2000)
     buclePrincipal(filaOpt, colOpt) //Tratar el caramelo optimo
   }
 
