@@ -1,7 +1,9 @@
 package interfaz
+import com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener
 import logica.Operaciones
-import ui.{PanelEstrellas, PanelJuego, PanelPuntuacion, PanelTablero, PanelVidas}
+import ui.{PanelJuego, PanelPuntuacion, PanelTablero, PanelVidas}
 
+import java.awt.event.{WindowAdapter, WindowEvent}
 import scala.util.Random
 import java.io.File
 import javax.sound.sampled._
@@ -32,15 +34,14 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
   private val panelTablero = new PanelTablero(numFilas, numCol, this, modoJuego)
   private val vidas = new PanelVidas //Panel para las
   private val puntuaciones = new PanelPuntuacion
-  private val estrellas = new PanelEstrellas
   private val titulo = new Label("SCALA CANDY CRUSH") //Titulo del juego
-  private val botonAutomatico = new Button("PASO SIGUIENTE") { //Boton para el modo automatico
+ /* private val botonAutomatico = new Button("PASO SIGUIENTE") { //Boton para el modo automatico
     reactions += { //Reaccionar al pulsar el boton
       case _ => funcionBotonAutomatico() //Llamar a la funcion del boton
     }
-  }
+  }*/
 
-  contents = new PanelJuego(panelTablero, vidas, puntuaciones, estrellas, botonAutomatico, modoJuego)
+  contents = new PanelJuego(panelTablero, vidas, puntuaciones, modoJuego)
   //--------------------------------------------------ATENCION ESTACION EN CURVA---------------------------------------
   private var tablero: List[Char] = Nil
   private var vidasJuego: Int = 5
@@ -48,8 +49,10 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
   //----------------------------------------AL SALIR TENGA CUIDADO PARA NO INTRODUCIR EL PIE ENTRE COCHE Y ANDEN----------------------------------------------------
 
   def iniciar(): Unit = {
-    tablero = operaciones.rellenarTablero(operaciones.generarTablero(numFilas*numCol,dificultadJuego,operaciones.generarElemento)) //Crea un tablero nuevo con colores aleatorios
-    bucleJuego() //Iniciar el juego
+    tablero = operaciones.rellenarTablero(operaciones.generarTablero(numFilas * numCol, dificultadJuego, operaciones.generarElemento))
+    bucleJuego()
+
+    if (modoJuego == 2) modoAutomatico() // Llamada a la función del botón automático si el modo de juego es 2
   }
 
   private def recargarComponentes(): Unit = {
@@ -57,19 +60,20 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
     panelTablero.actualizarTablero(tablero) //Actualizar el tablero
     vidas.actualizarVidas(vidasJuego) //Actualizar las vidas
     puntuaciones.actualizarPuntos(puntos)
-    estrellas.actualizarEstrellas(puntos)
     this.repaint() //Repintar la ventana
   }
 
-  def funcionBotonAutomatico(): Unit = {
+
+  def modoAutomatico(): Unit = {
     val posOptimo = operaciones.mejorCamino(tablero) //Obtener la posicion del caramelo optimo
 
     val filaOpt = posOptimo / numCol //Obtener la fila del caramelo optimo
     val colOpt = posOptimo % numCol //Obtener la columna del caramelo optimo
 
     //Mostrar la posicion del caramelo optimo
-    Dialog.showMessage(contents.head, "Fila: " + filaOpt + ", columna: " + colOpt, title = "Encontrado posición óptima")
+    Dialog.showMessage(contents.head, "Fila: " + filaOpt + ", columna: " + colOpt, title = "Posición óptima:")
 
+    //Thread.sleep(2000)
     buclePrincipal(filaOpt, colOpt) //Tratar el caramelo optimo
   }
 
@@ -94,6 +98,8 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
     clip.start()
     audioInputStream.close()
   }
+
+
 
    def buclePrincipal( filaUser : Int, colUser : Int): Unit = {
 
@@ -150,18 +156,24 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
           //buclePrincipal(nuevoTablero2, vidasJuego,filaUser, colUser)
           bucleJuego()
         }
+     if (modoJuego == 2) modoAutomatico() // Llamada a la función del botón automático si el modo de juego es 2
     }
 
   private def bucleJuego(): Unit = {
     if (vidasJuego == 0) { //Si se llega a 0 vidas
       sys.exit(0) //Terminamos el juego
     }
+
     recargarComponentes() //Recargamos los componentes
+
+
   }
+
 
   val icono = new ImageIcon("src/img/icono.png")
   iconImage = icono.getImage
 
   centerOnScreen()
+
 }
 

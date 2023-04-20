@@ -14,8 +14,8 @@ class ObtencionParametros extends MainFrame {
 
   val filasField = new TextField(3) // Campo para ingresar las filas
   val columnasField = new TextField(3) // Campo para ingresar las columnas
-  val dificultadCombo = new ComboBox(List(1, 2)) // Combo para seleccionar la dificultad
-  val modoCombo = new ComboBox(List("-m", "-a")) // Combo para seleccionar el modo de juego
+  val dificultadCombo = new ComboBox(List("Fácil", "Difícil")) // Combo para seleccionar la dificultad
+  val modoCombo = new ComboBox(List("Manual", "Automático")) // Combo para seleccionar el modo de juego
 
     val parametros = new Button("¡A por esos caramelos!") { // Botón para iniciar el juego
       font = new Font("Dialog", Font.PLAIN, 16) // Tamaño de fuente de 16
@@ -25,12 +25,12 @@ class ObtencionParametros extends MainFrame {
             val filas = filasField.text.toInt // Obtener las filas
             val columnas = columnasField.text.toInt // Obtener las columnas
             val dificultad = dificultadCombo.selection.item match { // Obtener el nivel de dificultad
-              case 1 => 1
+              case "Fácil" => 1
               case _ => 2
             }
             val modo = modoCombo.selection.item match { // Obtener el modo de juego
-              case "-m" => 1
-              case _ => 0
+              case "Manual" => 1
+              case _ => 2
             }
             val juegoFrame = new Juego(filas, columnas, dificultad, modo) // Crear el juego
 

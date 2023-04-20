@@ -7,8 +7,7 @@ import scala.swing._
 class PanelJuego(panelTablero: PanelTablero,
                           vidas: PanelVidas,
                           puntuaciones: PanelPuntuacion,
-                          estrellas: PanelEstrellas,
-                          botonAutomatico: Button,
+                          //botonAutomatico: Button,
                           modoJuego: Int) extends BorderPanel{
   private val botonSalir = new Button("Terminar partida") {
     reactions += {
@@ -17,13 +16,12 @@ class PanelJuego(panelTablero: PanelTablero,
   }
   val puntos = new Label("Puntuacion: ") {font = new Font("Arial", Font.PLAIN,20)}
   layout(panelTablero) = BorderPanel.Position.Center // Posición del panel del tablero
-  layout(new GridPanel(1, 3) { // Panel de dos columnas
+  layout(new GridPanel(1, 2) { // Panel de dos columnas
     contents += vidas // Agregar el panel de las vidas
     contents += puntuaciones
-    contents += estrellas
-    if(modoJuego == 0){
+    /*if(modoJuego == 0){
       contents += botonAutomatico // Agregar el botón automático
-    }
+    }*/
    // contents += botonSalir //Agregar el botón de salir
     opaque = false //Transparente
   }
