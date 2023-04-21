@@ -41,6 +41,10 @@ class CaramelosLabel(fila: Int, col: Int, juego: Juego, modo: Int) extends Label
       val imagenCaramelo4 = new Imagenes("src/img/Rompecabezas.png")
       icon = new ImageIcon(imagenCaramelo4.getImage.getScaledInstance(anchura, altura, Image.SCALE_REPLICATE)) // Cambiar el icono del caramelo
 
+    } else if (caramelo == 'X') { //para las X
+      val imagenCaramelo4 = new Imagenes("src/img/Borrados.png")
+      icon = new ImageIcon(imagenCaramelo4.getImage.getScaledInstance(anchura, altura, Image.SCALE_REPLICATE)) // Cambiar el icono del caramelo
+
     }
   }
 }

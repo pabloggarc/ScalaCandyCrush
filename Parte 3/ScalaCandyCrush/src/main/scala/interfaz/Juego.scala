@@ -12,6 +12,9 @@ import scala.swing._
 
 class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainFrame {
 
+
+
+
   val numFilas = filas
   val numCol = columnas
   val modoJuego: Int = modo
@@ -52,15 +55,18 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
     tablero = operaciones.rellenarTablero(operaciones.generarTablero(numFilas * numCol, dificultadJuego, operaciones.generarElemento))
     bucleJuego()
 
-    if (modoJuego == 2) modoAutomatico() // Llamada a la función del botón automático si el modo de juego es 2
-  }
+    if (modoJuego == 2) {
+      // Llamada al hilo del modo automático
+      val hiloJuego = new HiloJuego(this)
+      hiloJuego.start()
+    }  }
 
   private def recargarComponentes(): Unit = {
     println(operaciones.mostrarTablero(tablero, vidasJuego, numCol))
     panelTablero.actualizarTablero(tablero) //Actualizar el tablero
     vidas.actualizarVidas(vidasJuego) //Actualizar las vidas
     puntuaciones.actualizarPuntos(puntos)
-    this.repaint() //Repintar la ventana
+    pintar() //Repintar la ventana
   }
 
 
@@ -99,6 +105,10 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
     audioInputStream.close()
   }
 
+  def pintar(): Unit = {
+    panelTablero.actualizarTablero(tablero) //Actualizar el tablero
+    this.repaint() //Repintar la ventana
+  }
 
 
    def buclePrincipal( filaUser : Int, colUser : Int): Unit = {
@@ -116,10 +126,13 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
           println(operaciones.mostrarTablero(tablero, vidasJuego, numCol))
           puntos += (150 * borrados) - puntos
 
+
+
+
           if (borrados == 0) {
             println("¡Has perdido una vida " + "❤" * (vidasJuego - 1) + "\uD83D\uDC94!")
             vidasJuego -= 1
-            //buclePrincipal(tableroConX, vidasJuego - 1) // Si no se han borrado caramelos se pierde una vidaç
+            //buclePrincipal(tablero, vidasJuego - 1) // Si no se han borrado caramelos se pierde una vidaç
             bucleJuego()
           }
           else if (borrados >= 1 && borrados < 5) {
@@ -163,17 +176,12 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
     if (vidasJuego == 0) { //Si se llega a 0 vidas
       sys.exit(0) //Terminamos el juego
     }
-
     recargarComponentes() //Recargamos los componentes
-
-
   }
-
 
   val icono = new ImageIcon("src/img/icono.png")
   iconImage = icono.getImage
 
   centerOnScreen()
-
 }
 
