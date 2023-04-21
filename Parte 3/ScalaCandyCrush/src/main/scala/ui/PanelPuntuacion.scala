@@ -5,7 +5,7 @@ import javax.swing.ImageIcon
 import scala.swing._
 
 class PanelPuntuacion extends FlowPanel {
-  private val textoPuntuacion: Label = new Label("Puntuacion: 0") {
+  private val textoPuntuacion: Label = new Label("Puntuación: 0") {
     font = new Font("Arial", java.awt.Font.PLAIN, 30)
   }
   opaque = false
@@ -15,7 +15,7 @@ class PanelPuntuacion extends FlowPanel {
 
   def actualizarPuntos(puntosNuevos: Int): Unit = {
     puntos += puntosNuevos // Aumentar los puntos actuales
-    textoPuntuacion.text = s"Puntuacion: $puntos" // Actualizar el Label con los nuevos puntos
+    textoPuntuacion.text = s"Puntuación: $puntos" // Actualizar el Label con los nuevos puntos
     actualizarEstrellas(puntos)
   }
 

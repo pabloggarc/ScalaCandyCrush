@@ -6,6 +6,7 @@ import java.io.File
 import javax.imageio.ImageIO
 import javax.swing.{ImageIcon, JFrame, UIManager}
 import java.awt.Font
+import javax.sound.sampled.{AudioSystem, Clip, DataLine, FloatControl}
 
 
 
@@ -30,7 +31,7 @@ class VentanaPrincipal extends MainFrame {
       VentanaPrincipal.this.close()
       parametros.centerOnScreen()
       parametros.visible = true
-
+      playMusica()
   }
 
 /*
@@ -54,6 +55,15 @@ class VentanaPrincipal extends MainFrame {
   def tieneElementos[A](lst: List[A]): Boolean = lst match {
     case _ :: _ => true // si la lista tiene al menos un elemento
     case Nil => false // si la lista está vacía
+  }
+
+  def playMusica(): Unit = {
+    val file = new File("src/audio/candy.wav")
+    val audioInputStream = AudioSystem.getAudioInputStream(file)
+    val clip = AudioSystem.getClip()
+    clip.open(audioInputStream)
+    clip.loop(Clip.LOOP_CONTINUOUSLY)
+    clip.start()
   }
 
   val listaCambio = UIManager.getInstalledLookAndFeels.toList

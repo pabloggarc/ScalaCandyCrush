@@ -14,7 +14,7 @@ class PanelJuego(panelTablero: PanelTablero,
       case _ => sys.exit(0)
     }
   }
-  val puntos = new Label("Puntuacion: ") {font = new Font("Arial", Font.PLAIN,20)}
+  val puntos = new Label("Puntuación: ") {font = new Font("Arial", Font.PLAIN,20)}
   layout(panelTablero) = BorderPanel.Position.Center // Posición del panel del tablero
   layout(new GridPanel(1, 2) { // Panel de dos columnas
     contents += vidas // Agregar el panel de las vidas
