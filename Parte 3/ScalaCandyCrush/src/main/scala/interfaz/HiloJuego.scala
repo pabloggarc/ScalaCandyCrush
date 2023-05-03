@@ -9,7 +9,6 @@ class HiloJuego(juego: Juego) extends Thread {
         Thread.sleep(2000)
 
           loop()
-
       }
       loop()
     } catch {

@@ -14,8 +14,8 @@ class PanelPuntuacion extends FlowPanel {
   private var puntos: Int = 0
 
   def actualizarPuntos(puntosNuevos: Int): Unit = {
-    puntos += puntosNuevos // Aumentar los puntos actuales
-    textoPuntuacion.text = s"Puntuación: $puntos" // Actualizar el Label con los nuevos puntos
+    puntos += puntosNuevos
+    textoPuntuacion.text = s"Puntuación: $puntos"
     actualizarEstrellas(puntos)
   }
 
@@ -24,18 +24,18 @@ class PanelPuntuacion extends FlowPanel {
   private val estrellaVacia: String = "src/img/EstrellaVacia.png"
   private val estrellaLlena: String = "src/img/EstrellaLlena.png"
   private val estrellaAzul: String = "src/img/EstrellaAzul.png"
-  private val estrellas: List[Label] = setEstrellas(3) // Lista de corazones
+  private val estrellas: List[Label] = setEstrellas(3)
 
-  private def setEstrellas(n: Int): List[Label] = { // Método que crea los corazones
-    if (n != 0) { // Si aún no se han creado todos los corazones
-      val estrella = new Label { // Corazón
-        val imagenEstrella = new Imagenes(estrellaVacia) // Imagen del corazón
-        icon = new ImageIcon(imagenEstrella.getImage.getScaledInstance(25, 25, Image.SCALE_REPLICATE)) // Icono del corazón
+  private def setEstrellas(n: Int): List[Label] = {
+    if (n != 0) {
+      val estrella = new Label {
+        val imagenEstrella = new Imagenes(estrellaVacia)
+        icon = new ImageIcon(imagenEstrella.getImage.getScaledInstance(25, 25, Image.SCALE_REPLICATE))
       }
-      contents += estrella // Agregar el corazón
-      estrella :: setEstrellas(n - 1) // Agregar el corazón a la lista
+      contents += estrella
+      estrella :: setEstrellas(n - 1)
     } else {
-      Nil // Devolver Nil
+      Nil
     }
   }
 
@@ -47,7 +47,7 @@ class PanelPuntuacion extends FlowPanel {
 
   private def actualizarEstrellas(puntos: Int, pos: Int, estr: List[Label]): Unit = {
 
-    if (pos > 0) { // Si aún no se han actualizado todas las estrellas
+    if (pos > 0) {
       if (puntos >= 15000 && puntos < 30000) {
         estrellas(0).icon = new ImageIcon(new Imagenes(estrellaLlena).getImage.getScaledInstance(25, 25, Image.SCALE_REPLICATE))
 
@@ -60,8 +60,8 @@ class PanelPuntuacion extends FlowPanel {
         estrellas(1).icon = new ImageIcon(new Imagenes(estrellaAzul).getImage.getScaledInstance(25, 25, Image.SCALE_REPLICATE))
         estrellas(2).icon = new ImageIcon(new Imagenes(estrellaAzul).getImage.getScaledInstance(25, 25, Image.SCALE_REPLICATE))
       }
-      estr.head.visible = true // Hacer visible la primera estrella
-      actualizarEstrellas(puntos, pos - 1, estr.tail) // Actualizar las siguientes estrellas
+      estr.head.visible = true
+      actualizarEstrellas(puntos, pos - 1, estr.tail)
     }
   }
 

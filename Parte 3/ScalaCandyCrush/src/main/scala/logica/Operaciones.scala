@@ -99,14 +99,14 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         }
     }
     /*----------------------OPERACIONES GRAFICOS------------------*/
-    def rellenarTablero(tablero: List[Char]): List[Char] = { //Rellena el tablero con caramelos aleatorios
+    def rellenarTablero(tablero: List[Char]): List[Char] = {
         tablero match {
-            case Nil => Nil //Si el tablero esta vacio, devolvemos el tablero vacio
-            case head :: tail if head == 'X' => //Si el caramelo es una 'X', generamos un caramelo aleatorio
+            case Nil => Nil
+            case head :: tail if head == 'X' =>
                 val rand = new Random()
-                val newChar = (rand.nextInt(numColores)+'0').toChar //Generamos un caramelo aleatorio
-                newChar::rellenarTablero(tail) //Concatenamos el caramelo generado con el resto del tablero
-            case head :: tail => head :: rellenarTablero(tail) //Si el caramelo no es una 'X', lo concatenamos con el resto del tablero
+                val newChar = (rand.nextInt(numColores)+'0').toChar
+                newChar::rellenarTablero(tail)
+            case head :: tail => head :: rellenarTablero(tail)
         }
     }
     /*-----------------------OPERACIONES TABLERO-----------------------*/

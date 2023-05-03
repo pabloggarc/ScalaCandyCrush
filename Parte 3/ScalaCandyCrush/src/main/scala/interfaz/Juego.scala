@@ -12,22 +12,19 @@ import scala.swing._
 
 class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainFrame {
 
-
-
-
   val numFilas = filas
   val numCol = columnas
   val modoJuego: Int = modo
   val dificultadJuego: Int = dificultad
   private val operaciones = new Operaciones(numFilas, numCol, selectNumColores())
 
-  title = "Candy Crush" //Titulo de la ventana
-  preferredSize = new Dimension(800, 800) //Tamaño de la ventana
+  title = "Candy Crush"
+  preferredSize = new Dimension(800, 800)
   resizable = false
-  visible = true //Mostrar la ventana
-  centerOnScreen() //Centrar la ventana en la pantalla
+  visible = true
+  centerOnScreen()
 
-  private def selectNumColores(): Int = { //Funcion para seleccionar el numero de colores segun la dificultad
+  private def selectNumColores(): Int = {//En función de la dificultad determinamos la cantidad de tipos de caramelos
     dificultadJuego match {
       case 2 => 6
       case 1 => 4
@@ -35,21 +32,16 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
   }
 
   private val panelTablero = new PanelTablero(numFilas, numCol, this, modoJuego)
-  private val vidas = new PanelVidas //Panel para las
+  private val vidas = new PanelVidas
   private val puntuaciones = new PanelPuntuacion
-  private val titulo = new Label("SCALA CANDY CRUSH") //Titulo del juego
- /* private val botonAutomatico = new Button("PASO SIGUIENTE") { //Boton para el modo automatico
-    reactions += { //Reaccionar al pulsar el boton
-      case _ => funcionBotonAutomatico() //Llamar a la funcion del boton
-    }
-  }*/
+  private val titulo = new Label("SCALA CANDY CRUSH")
+
 
   contents = new PanelJuego(panelTablero, vidas, puntuaciones, modoJuego)
-  //--------------------------------------------------ATENCION ESTACION EN CURVA---------------------------------------
+
   private var tablero: List[Char] = Nil
   private var vidasJuego: Int = 5
   private var puntos: Int = 0
-  //----------------------------------------AL SALIR TENGA CUIDADO PARA NO INTRODUCIR EL PIE ENTRE COCHE Y ANDEN----------------------------------------------------
 
   def iniciar(): Unit = {
     tablero = operaciones.rellenarTablero(operaciones.generarTablero(numFilas * numCol, dificultadJuego, operaciones.generarElemento))
@@ -65,7 +57,7 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
     println(operaciones.mostrarTablero(tablero, vidasJuego, numCol))
     panelTablero.actualizarTablero(tablero) //Actualizar el tablero
     vidas.actualizarVidas(vidasJuego) //Actualizar las vidas
-    puntuaciones.actualizarPuntos(puntos)
+    puntuaciones.actualizarPuntos(puntos) //Actualizar los puntos
     pintar() //Repintar la ventana
   }
 
@@ -76,11 +68,10 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
     val filaOpt = posOptimo / numCol //Obtener la fila del caramelo optimo
     val colOpt = posOptimo % numCol //Obtener la columna del caramelo optimo
 
-    //Mostrar la posicion del caramelo optimo
     Dialog.showMessage(contents.head, "Fila: " + filaOpt + ", columna: " + colOpt, title = "Posición óptima:")
 
     Thread.sleep(2000)
-    buclePrincipal(filaOpt, colOpt) //Tratar el caramelo optimo
+    buclePrincipal(filaOpt, colOpt) //Ejecutamos el resto de metodos con el caramelo optimo
   }
 
   private def elegirAudio(borrados: Int): File = {
@@ -106,8 +97,7 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
   }
 
   def pintar(): Unit = {
-    panelTablero.actualizarTablero(tablero) //Actualizar el tablero
-    this.repaint() //Repintar la ventana
+    this.repaint() //pintamos de nuevo la ventana
   }
 
 
@@ -117,7 +107,6 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
 
         if (caramelo_seleccionado.isDigit && caramelo_seleccionado.asDigit >= 1 & caramelo_seleccionado.asDigit <= 6) {
           val caminoEncontrado = operaciones.buscarCamino(tablero, filaUser * numCol + colUser)
-          //val tableroConX = operaciones.marcar(tablero, caminoEncontrado, 0)
           tablero = operaciones.marcar(tablero, caminoEncontrado, 0)
           val borrados: Int = operaciones.contarX(tablero)
           playAudio(borrados)
@@ -132,28 +121,21 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
           if (borrados == 0) {
             println("¡Has perdido una vida " + "❤" * (vidasJuego - 1) + "\uD83D\uDC94!")
             vidasJuego -= 1
-            //buclePrincipal(tablero, vidasJuego - 1) // Si no se han borrado caramelos se pierde una vidaç
             bucleJuego()
           }
           else if (borrados >= 1 && borrados < 5) {
-            //val nuevoTablero2: List[Char] = operaciones.actualizarTablero(tableroConX, operaciones.cambiosTablero(tableroConX))
-            //buclePrincipal(nuevoTablero2, vidasJuego,filaUser, colUser)
             tablero = operaciones.actualizarTablero(tablero, operaciones.cambiosTablero(tablero))
             bucleJuego()
           }
           else {
-            //val nuevoTablero = operaciones.reemplazarCaramelo(tableroConX, filaUser * numCol + colUser, borrados, 0) // Si se han borrado 5 caramelos se convierte en B
             tablero =operaciones.reemplazarCaramelo(tablero, filaUser * numCol + colUser, borrados, 0)
-            //println(operaciones.mostrarTablero(nuevoTablero, vidasJuego, numCol))
             println(operaciones.mostrarTablero(tablero, vidasJuego, numCol))
 
-            //val nuevoTablero2: List[Char] = operaciones.actualizarTablero(nuevoTablero, operaciones.cambiosTablero(nuevoTablero))
-            //buclePrincipal(nuevoTablero2, vidasJuego, filaUser, colUser)
             tablero = operaciones.actualizarTablero(tablero, operaciones.cambiosTablero(tablero))
             bucleJuego()
           }
         }
-        else if (caramelo_seleccionado == '7' || caramelo_seleccionado == '8' || caramelo_seleccionado == '9') { //estamos ante un caramelo_seleccionado NO ESPECIAL
+        else if (caramelo_seleccionado == '7' || caramelo_seleccionado == '8' || caramelo_seleccionado == '9') {
           playAudio(1)
           tablero = caramelo_seleccionado match {
             case '7' => operaciones.bloqueBomba(tablero, filaUser * numCol + colUser)
@@ -161,25 +143,22 @@ class Juego(filas: Int, columnas: Int, dificultad: Int, modo: Int) extends MainF
             case '9' => operaciones.bloqueRompecabezas(tablero, filaUser * numCol + colUser, dificultadJuego)
           }
 
-          //println(operaciones.mostrarTablero(tablero4, vidasJuego, numCol))
           println(operaciones.mostrarTablero(tablero, vidasJuego, numCol))
-          //val nuevoTablero2: List[Char] = operaciones.actualizarTablero(tablero4, operaciones.cambiosTablero(tablero4))
           tablero = operaciones.actualizarTablero(tablero, operaciones.cambiosTablero(tablero))
 
-          //buclePrincipal(nuevoTablero2, vidasJuego,filaUser, colUser)
           bucleJuego()
         }
-     if (modoJuego == 2) modoAutomatico() // Llamada a la función del botón automático si el modo de juego es 2
+     if (modoJuego == 2) modoAutomatico() // Llamada a la función del botón automático si estamos en el modo automatico
     }
 
   private def bucleJuego(): Unit = {
-    if (vidasJuego == 0) { //Si se llega a 0 vidas
-      sys.exit(0) //Terminamos el juego
+    if (vidasJuego == 0) { //Si nos quedamos sin vidas, se acaba la partida
+      sys.exit(0)
     }
     recargarComponentes() //Recargamos los componentes
   }
 
-  val icono = new ImageIcon("src/img/icono.png")
+  val icono = new ImageIcon("src/img/icono.png") //para mostrar el icono de la ventana
   iconImage = icono.getImage
 
   centerOnScreen()

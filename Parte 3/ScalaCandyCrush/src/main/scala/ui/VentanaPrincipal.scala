@@ -1,5 +1,4 @@
 package ui
-
 import scala.swing._
 import scala.swing.event._
 import java.io.File
@@ -8,38 +7,28 @@ import javax.swing.{ImageIcon, JFrame, UIManager}
 import java.awt.Font
 import javax.sound.sampled.{AudioSystem, Clip, DataLine, FloatControl}
 
-
-
-
 class VentanaPrincipal extends MainFrame {
 
 
-  title = "Scala Candy Crush" //Titulo de la ventana
+  title = "Scala Candy Crush"
   val imagen = ImageIO.read(new File("src/img/Portada2.png"))
-  resizable = false //tamano fijo de la ventana
-  preferredSize = new Dimension((imagen.getWidth() * 0.55).toInt, (imagen.getHeight() * 0.55).toInt) //tamano de la ventana
+  resizable = false
+  preferredSize = new Dimension((imagen.getWidth() * 0.55).toInt, (imagen.getHeight() * 0.55).toInt)
 
-  val jugar = new Button {  //Boton para jugar
+  val jugar = new Button {
     text = "JUGAR"
-    font = new Font("Dialog", Font.PLAIN, 16) // Tamaño de fuente de 16
+    font = new Font("Dialog", Font.PLAIN, 16)
 
   }
 
   jugar.reactions += {
     case ButtonClicked(_) =>
-      val parametros = new ObtencionParametros //Ventana para obtener los parametros
+      val parametros = new ObtencionParametros
       VentanaPrincipal.this.close()
       parametros.centerOnScreen()
       parametros.visible = true
       playMusica()
   }
-
-/*
-  for (info <- javax.swing.UIManager.getInstalledLookAndFeels) {
-    if ("Windows" == info.getName) {
-      javax.swing.UIManager.setLookAndFeel(info.getClassName)
-    }
-  }*/
 
   def ponerFormatoWindows(lista: List[UIManager.LookAndFeelInfo]): Unit = {
     if (tieneElementos(lista)) {
@@ -53,8 +42,8 @@ class VentanaPrincipal extends MainFrame {
   }
 
   def tieneElementos[A](lst: List[A]): Boolean = lst match {
-    case _ :: _ => true // si la lista tiene al menos un elemento
-    case Nil => false // si la lista está vacía
+    case _ :: _ => true
+    case Nil => false
   }
 
   def playMusica(): Unit = {
@@ -73,6 +62,6 @@ class VentanaPrincipal extends MainFrame {
   val icono = new ImageIcon("src/img/icono.png")
   iconImage = icono.getImage
 
-  contents = new PanelVentanaPrincipal(jugar) //Panel principal de la ventana (para poner el fondo y el boton en transparencia)
-  centerOnScreen() //Centrar la ventana en la pantalla
+  contents = new PanelVentanaPrincipal(jugar)
+  centerOnScreen()
 }

@@ -7,30 +7,21 @@ import scala.swing._
 class PanelJuego(panelTablero: PanelTablero,
                           vidas: PanelVidas,
                           puntuaciones: PanelPuntuacion,
-                          //botonAutomatico: Button,
                           modoJuego: Int) extends BorderPanel{
-  private val botonSalir = new Button("Terminar partida") {
-    reactions += {
-      case _ => sys.exit(0)
-    }
-  }
+
   val puntos = new Label("Puntuación: ") {font = new Font("Arial", Font.PLAIN,20)}
-  layout(panelTablero) = BorderPanel.Position.Center // Posición del panel del tablero
-  layout(new GridPanel(1, 2) { // Panel de dos columnas
-    contents += vidas // Agregar el panel de las vidas
+  layout(panelTablero) = BorderPanel.Position.Center
+  layout(new GridPanel(1, 2) {
+    contents += vidas
     contents += puntuaciones
-    /*if(modoJuego == 0){
-      contents += botonAutomatico // Agregar el botón automático
-    }*/
-   // contents += botonSalir //Agregar el botón de salir
-    opaque = false //Transparente
+    opaque = false
   }
-  ) = BorderPanel.Position.South // Posición del panel de las vidas
+  ) = BorderPanel.Position.South
 
   override def paintComponent(g: Graphics2D): Unit = {
     super.paintComponent(g)
 
-    val imagen = ImageIO.read(new File("src/img/fondo3.jpg")) // Obtener la imagen de fondo
-    g.drawImage(imagen, 0, 0, size.width, size.height, null) // Pintar la imagen de fondo
+    val imagen = ImageIO.read(new File("src/img/fondo3.jpg"))
+    g.drawImage(imagen, 0, 0, size.width, size.height, null)
   }
 }
