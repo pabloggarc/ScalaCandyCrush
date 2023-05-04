@@ -159,6 +159,7 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         }
     }
 
+    //Dados los vecinos de selec, realiza las comprobaciones explicadas en la memoria para ver que no se salgan
     def analizarVecinos(vecinos: List[Int], selec: Int, i: Int): List[Int] = {
         i match {
             case n if n > 3 => Nil
@@ -170,6 +171,7 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         }
     }
 
+    //Algoritmo de backtracking para calcular el camino
     private def explorarVecinos(tablero: List[Char], camino: List[Int], visitados: List[Int], vecinos: List[Int], selec: Int): List[Int] = {
         vecinos match {
             case Nil => camino
@@ -189,6 +191,7 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         }
     }
 
+    //Uniendo las funciones anteriores, devuelve el camino, en caso de que exista
     def buscarCamino(tablero: List[Char], selec: Int): List[Int] = {
         val vecinos: List[Int] = analizarVecinos(List(selec - numCol, selec + numCol, selec - 1, selec + 1), selec, 0)
         val camino: List[Int] = explorarVecinos(tablero, List(selec), List(selec), vecinos, selec)
@@ -198,6 +201,7 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         }
     }
 
+    //Borra los caramelos del camino
     def marcar(tablero: List[Char], camino: List[Int],n:Int): List[Char] = {
         tablero match {
             case Nil => Nil
@@ -226,6 +230,7 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         contarNoXencimaAux(tablero, elem % numCol, elem)
     }
 
+    //Mira si en una lista [[a, b], [c, d], ..., [e, f]] un elemento es alguna de las cabezas de las sublistas
     private def perteneceSublista(lista: List[List[Int]], elem: Int): Boolean = {
         lista match {
             case Nil => false
@@ -247,6 +252,7 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         }
     }
 
+    //Métodos auxiliares para generar una lista de actualizaciones
     private def recolocarTableroAux(tablero: List[Char], elem: Int): List[List[Int]] = {
         if (longitud(tablero) <= elem) {
             Nil
@@ -276,6 +282,7 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         }
     }
 
+    //Por como está planteada la recursividad, algunas actualizaciones sobran, nos quedamos con la primera de cada uno
     private def dejarDefinitivos(actualizaciones: List[List[Int]], actualizacionesDefinitivas: List[List[Int]]): List[List[Int]] = {
         actualizaciones match {
             case Nil => actualizacionesDefinitivas
@@ -418,6 +425,7 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
 
     }
 
+    //Cuántos caramelos hay de un tipo
     private def contarTipoCaramelo(tablero: List[Char], tipo: Char): Int = {
         tablero match {
             case Nil => 0
@@ -433,6 +441,7 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         }
     }
 
+    //Cuántos se borran desde una posición (según los criterios en memoria)
     private def longitudCaminos(tablero: List[Char], posicion: Int): List[List[Int]] = {
         posicion match {
             case _ if (posicion == longitud(tablero)) => Nil
@@ -462,6 +471,7 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
         }
     }
 
+    //Índice de la posición que más borra
     def mejorCamino(tablero: List[Char]): Int = {
         indiceCamino(longitudCaminos(tablero, 0), longitudMasLarga(longitudCaminos(tablero, 0), 0))
     }
