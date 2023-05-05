@@ -5,16 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>PL3 - PAP</title>
         <style>
-        body {
-			font-family: 'Calibri';
-			font-size: 16px;
-			line-height: 1.5;
-			margin: 0;
-			padding: 0;
-		}
-		h1, h2, h3 {
-			text-align: center;
-		}
+        body { 
+            font-family: 'Calibri'; 
+            font-size: 16px; 
+            line-height: 1.5; 
+            margin: 0; 
+            padding: 0;
+        }
+        h1, h2, h3 {
+            text-align: center;
+        }
         h3 {
             font-size: 13px; 
         }
