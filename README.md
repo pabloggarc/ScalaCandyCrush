@@ -10,4 +10,4 @@ Simulación del juego Candy Crush en Scala siguiendo el paradigma funcional, par
 Con motivo de la tercera práctica, se pidió implementar un sistema de puntos, y almacenarlos en la nube, para posteriormente consultarlos. Para esto se hizo uso de Azure, donde se desplegó: 
 * Servidor de PostgreSQL
 * API en Python, para recoger los datos y almacenarlos en la BBDD
-* [Web](www.puntuacionescandy.azurewebsites.net/index.php) con PHP para realizar un leaderboard de las puntuaciones de los jugadores
+* [Web](https://puntuacionescandy.azurewebsites.net/index.php) con PHP para realizar un leaderboard de las puntuaciones de los jugadores
