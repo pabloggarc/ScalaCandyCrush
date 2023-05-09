@@ -15,8 +15,13 @@ class Pg {
         }
     }
 
-    function consultar(PDO $c){
-        $query = "SELECT * FROM partidas ORDER BY puntos DESC;"; 
+    function consultar(PDO $c, int $sort){
+        if($sort == 0){
+            $query = "SELECT * FROM partidas ORDER BY puntos DESC;";
+        }
+        else{
+            $query = "SELECT * FROM partidas ORDER BY id DESC;";
+        }
         $stmt = $c -> query($query); 
         $results = $stmt -> fetchAll(PDO::FETCH_ASSOC);
         echo '<table>';

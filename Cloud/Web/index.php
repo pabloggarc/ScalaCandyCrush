@@ -44,9 +44,20 @@
         </h3>
         <?php
             include_once("puntuaciones.php"); 
+
+            if(isset($_GET["sort"]) && $_GET["sort"] == 0){
+                echo '<a href="index.php?sort=1"><button type="button">Ordenar por puntuación</button></a>';
+                $sort = 1; 
+            }
+            else{
+                echo '<a href="index.php?sort=0"><button type="button">Ordenar por fecha</button></a>'; 
+                $sort = 0; 
+            }
+            echo '<div style="height: 20px;"></div>'; 
+
             $pg = new Pg(); 
             $c = $pg -> conectar();  
-            $pg -> consultar($c); 
+            $pg -> consultar($c, $sort); 
         ?>
     </body>
 </html>
