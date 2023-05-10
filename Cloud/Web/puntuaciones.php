@@ -19,17 +19,22 @@ class Pg {
         if($sort == 0){
             $query = "SELECT * FROM partidas ORDER BY puntos DESC;";
         }
-        else{
+        else if($sort == 1){
             $query = "SELECT * FROM partidas ORDER BY id DESC;";
+        }
+        else{
+            $query = "SELECT * FROM partidas ORDER BY duracion DESC;";
         }
         $stmt = $c -> query($query); 
         $results = $stmt -> fetchAll(PDO::FETCH_ASSOC);
         echo '<table>';
-        echo '<tr><th>Nombre</th><th>Puntos</th></tr>';
+        echo '<tr><th>Nombre</th><th>Puntos</th><th>Tiempo</th><th>Fecha</th></tr>';
         foreach ($results as $row) {
             echo '<tr>';
             echo '<td>' . $row['nombre'] . '</td>';
             echo '<td>' . $row['puntos'] . '</td>';
+            echo '<td>' . $row['duracion'] . '</td>';
+            echo '<td>' . $row['fecha'] . '</td>';
             echo '</tr>';
         }
         echo '</table>';

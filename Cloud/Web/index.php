@@ -44,16 +44,17 @@
         </h3>
         <?php
             include_once("puntuaciones.php"); 
-
-            if(isset($_GET["sort"]) && $_GET["sort"] == 0){
-                echo '<a href="index.php?sort=1"><button type="button">Ordenar por puntuación</button></a>';
-                $sort = 1; 
-            }
-            else{
-                echo '<a href="index.php?sort=0"><button type="button">Ordenar por fecha</button></a>'; 
+            
+            if(!isset($_GET["sort"])){
                 $sort = 0; 
             }
-            echo '<div style="height: 20px;"></div>'; 
+            else{
+                $sort = $_GET["sort"]; 
+            }
+
+            echo '<a href="index.php?sort=0"><button type="button", style="margin: 10px">Ordenar por puntuación</button></a>';
+            echo '<a href="index.php?sort=1"><button type="button", style="margin: 10px">Ordenar por fecha</button></a>';
+            echo '<a href="index.php?sort=2"><button type="button", style="margin: 10px">Ordenar por tiempo</button></a>';
 
             $pg = new Pg(); 
             $c = $pg -> conectar();  

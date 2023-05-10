@@ -1,6 +1,6 @@
 import psycopg2
 
-def query(nombre, puntos): 
+def query(nombre, puntos, duracion, fecha): 
     try:
         conn = psycopg2.connect(
             host = "pl3.postgres.database.azure.com",
@@ -10,8 +10,8 @@ def query(nombre, puntos):
             port = "5432"
         )
         cursor = conn.cursor()
-        consulta = """ INSERT INTO partidas (nombre, puntos) VALUES (%s, %s)"""
-        datosConsulta = (nombre, puntos)
+        consulta = """ INSERT INTO partidas (nombre, puntos, duracion, fecha) VALUES (%s, %s, %s, %s)"""
+        datosConsulta = (nombre, puntos, duracion, fecha)
         cursor.execute(consulta, datosConsulta)
         conn.commit()
     except (Exception, psycopg2.Error) as error:
