@@ -36,10 +36,6 @@ class Juego (args: Array[String]){
 
           Seq("cmd", "/c", s"curl \"https://api-postgres.azurewebsites.net/api/api-postgres?nombre=$nombre&puntos=$puntos&fecha=$fechaInicialFormateada&duracion=$duracionPartida\" --ssl-no-revoke").!
 
-
-
-
-
         case _ =>
           val filaUsuario = pedirUsuarioPos("fila", tablero)
           val colUsuario = pedirUsuarioPos("columna", tablero)

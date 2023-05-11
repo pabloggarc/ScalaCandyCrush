@@ -106,8 +106,8 @@ class Operaciones (numFila: Int, numCol: Int, numColores: Int) {
             case _ => 0
         }
 
-        val puntosExtra = if (borrados >= 10) 1 else 0
-        val puntosTotales = puntos +puntosNuevos + puntosExtra + borrados
+        val puntosExtra = borrados / 10
+        val puntosTotales = puntos + puntosNuevos + puntosExtra + borrados
         val puntosFinales = if (modo == 1) puntosTotales else puntosTotales*2
         puntosFinales
     }
